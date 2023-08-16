@@ -19,7 +19,7 @@ export const SidebarData = [
     {
         title: "See all offers",
         icon: "👀",
-        link: "/all",
+        link: "/offers",
     },
     {
         title: "Settings",
