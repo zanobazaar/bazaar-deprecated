@@ -1,4 +1,5 @@
 import React from "react";
+import ContextProvider from "./contexts/MainContext";
 
 import { HashRouter, Routes, Route } from "react-router-dom";
 
@@ -15,19 +16,21 @@ import "./App.css";
 
 const App = () => {
     return (
-        <HashRouter basename={"/"}>
-            <Routes>
-                <Route element={<Layout />}>
-                    <Route path="/" Component={Dashboard} />
-                    <Route path="/bazaars" Component={Bazaars} />
-                    <Route path="/mybazaar" Component={MyBazaar} />
-                    <Route path="/create" Component={ManageOffers} />
-                    <Route path="/offers" Component={SeeAllOffers} />
-                    <Route path="/chat" Component={LiveChat} />
-                    <Route path="/settings" Component={Settings} />
-                </Route>
-            </Routes>
-        </HashRouter>
+        <ContextProvider>
+            <HashRouter basename={"/"}>
+                <Routes>
+                    <Route element={<Layout />}>
+                        <Route path="/" Component={Dashboard} />
+                        <Route path="/bazaars" Component={Bazaars} />
+                        <Route path="/mybazaar" Component={MyBazaar} />
+                        <Route path="/create" Component={ManageOffers} />
+                        <Route path="/offers" Component={SeeAllOffers} />
+                        <Route path="/chat" Component={LiveChat} />
+                        <Route path="/settings" Component={Settings} />
+                    </Route>
+                </Routes>
+            </HashRouter>
+        </ContextProvider>
     );
 };
 

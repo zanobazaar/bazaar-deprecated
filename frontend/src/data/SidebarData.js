@@ -37,3 +37,11 @@ export const SidebarData = [
         link: "/settings",
     },
 ];
+
+export const InitSidebarData = [
+    {
+        title: "Getting Started",
+        icon: "🌐",
+        link: "/",
+    },
+];

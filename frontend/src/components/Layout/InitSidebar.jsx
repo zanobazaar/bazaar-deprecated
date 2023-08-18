@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { DefaultContext } from "../../contexts/MainContext";
 import { Link } from "react-router-dom";
 
-import { SidebarData } from "../../data/SidebarData";
+import { InitSidebarData } from "../../data/SidebarData";
 
 import Logo from "../../assets/images/bazaar.svg";
 
-export const Sidebar = () => {
+export const InitSidebar = () => {
     // context data
     const { value, setValue } = useContext(DefaultContext);
 
@@ -16,7 +16,7 @@ export const Sidebar = () => {
                 <img src={Logo} width={60} alt="" srcset="" />
             </div>
             <ul>
-                {SidebarData.map((value, key) => {
+                {InitSidebarData.map((value, key) => {
                     return (
                         <li key={key}>
                             <Link to={value.link}>
