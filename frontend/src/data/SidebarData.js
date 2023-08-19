@@ -36,6 +36,11 @@ export const SidebarData = [
         icon: "⚙️",
         link: "/settings",
     },
+    {
+        title: "Donate",
+        icon: "💙",
+        link: "/donate",
+    },
 ];
 
 export const InitSidebarData = [
