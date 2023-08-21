@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strings"
 )
 
 type Info struct {
@@ -21,31 +22,31 @@ type Info struct {
 	} `json:"result"`
 }
 
-type Alias struct {
+type AliasCheck struct {
 	Id      int    `json:"id"`
 	Jsonrpc string `json:"jsonrpc"`
 	Result  struct {
-		AliasInfo struct {
+		AliasDetails struct {
 			Address     string `json:"address"`
-			Alias       string `json:"alias"`
 			Comment     string `json:"comment"`
 			TrackingKey string `json:"tracking_key"`
-		} `json:"alias_info"`
+		} `json:"alias_details"`
 		Status string `json:"status"`
 	} `json:"result"`
 }
 
-func GetWalletAlias(walletUrl string) string {
-	jsonBody := fmt.Sprintln(`{
-		"jsonrpc": "2.0",
-		"id": 0,
-		"method": "get_alias_details",
-		"params": {
-			"alias": "kekzploit"
-		}
-	}`)
+func AliasMatch(aliasTrim string, daemonUrl string, walletAddress string) bool {
 
-	request, err := http.NewRequest("POST", walletUrl, bytes.NewBuffer([]byte(jsonBody)))
+	jsonBody := fmt.Sprintf(`{
+	"jsonrpc": "2.0",
+	"id": 0,
+	"method": "get_alias_details",
+	"params": {
+		"alias": "%s"
+	}
+}`, aliasTrim)
+
+	request, err := http.NewRequest("POST", daemonUrl, bytes.NewBuffer([]byte(jsonBody)))
 	if err != nil {
 		fmt.Println("error") // return meaningful statement
 	}
@@ -64,11 +65,15 @@ func GetWalletAlias(walletUrl string) string {
 	}(res.Body)
 
 	body, _ := io.ReadAll(res.Body)
-	data := Info{}
+	data := AliasCheck{}
 
 	_ = json.Unmarshal([]byte(body), &data)
 
-	return data.Result.Address
+	if walletAddress == data.Result.AliasDetails.Address {
+		return true
+	}
+
+	return false
 }
 
 func GetWalletInfo(walletUrl string) string {
@@ -105,13 +110,29 @@ func GetWalletInfo(walletUrl string) string {
 	return data.Result.Address
 }
 
-func CheckZanoServices(walletUrl string, daemonUrl string) (string, string) {
+func CheckZanoServices(walletUrl string, daemonUrl string, alias string) (bool, bool) {
 
+	aliasTrim := strings.TrimSpace(alias)
+
+	var connected bool
+	var aliasMatches bool
+
+	// TODO - handle error correctly
 	walletAddress := GetWalletInfo(walletUrl)
-	fmt.Println(walletAddress)
+	if walletAddress != "" {
+		connected = true
+	} else {
+		connected = false
+	}
 
-	walletAlias := GetWalletAlias(walletUrl)
-	fmt.Println(walletAlias)
+	if aliasTrim != "" {
+		aliasMatch := AliasMatch(aliasTrim, daemonUrl, walletAddress)
+		if aliasMatch {
+			aliasMatches = true
+		}
+	} else {
+		aliasMatches = false
+	}
 
-	return walletAddress, walletAlias
+	return connected, aliasMatches
 }

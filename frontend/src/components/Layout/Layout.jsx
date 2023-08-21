@@ -5,14 +5,17 @@ import { DefaultContext } from "../../contexts/MainContext";
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import { InitSidebar } from "./InitSidebar";
+import { PartialSidebarData } from "../../data/SidebarData";
 
 export const Layout = () => {
-    const { walletConn, setWalletConn } = useContext(DefaultContext);
+    const { walletConn, mode } = useContext(DefaultContext);
 
     // change sidebar data based on whether daemon is connected
     let sidebar, connections;
-    if (walletConn) {
+    if (walletConn && mode == "full") {
         sidebar = <Sidebar />;
+    } else if (walletConn && mode == "partial") {
+        sidebar = <PartialSidebarData />;
     } else {
         sidebar = <InitSidebar />;
     }

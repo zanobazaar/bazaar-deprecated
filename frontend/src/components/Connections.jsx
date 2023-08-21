@@ -12,6 +12,8 @@ export const Connections = () => {
         setWalletUrl,
         daemonUrl,
         setDaemonUrl,
+        mode,
+        setMode,
     } = useContext(DefaultContext);
 
     // const [newDaemonUrl, setNewDaemonUrl] = useState(daemonUrl);
@@ -19,11 +21,22 @@ export const Connections = () => {
     // const [newAlias, setNewAlias] = useState("");
 
     const connect = () => {
-        CheckConnection(walletUrl, daemonUrl).then((result) => {
-            alert(result.address);
-            // setDaemonUrl(newDaemonUrl);
-            // setWalletUrl(newWalletUrl);
-            setWalletConn(false);
+        CheckConnection(walletUrl, daemonUrl, alias).then((result) => {
+            if (!result.connected) {
+                // handle not connected error gracefully on frontend
+                alert(result.connected);
+            } else {
+                if (result.alias) {
+                    // enable full functionality
+                    setMode("full");
+                    setWalletConn(true);
+                } else {
+                    //  enable partial functionality
+                    setMode("partial");
+                    alert(mode);
+                    setWalletConn(true);
+                }
+            }
         });
     };
 

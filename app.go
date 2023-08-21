@@ -22,12 +22,13 @@ func (a *App) startup(ctx context.Context) {
 }
 
 type Addresses struct {
-	Address string `json:"address"`
-	Alias   string `json:"alias"`
+	Connected    bool `json:"connected"`
+	AliasMatches bool `json:"alias"`
 }
 
 // CheckConnection returns a greeting for the given name
-func (a *App) CheckConnection(walletUrl string, daemonUrl string) Addresses {
-	address, aliasMatch := wallet.CheckZanoServices(walletUrl, daemonUrl)
-	return Addresses{Address: address, Alias: aliasMatch}
+func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) Addresses {
+
+	connected, aliasMatches := wallet.CheckZanoServices(walletUrl, daemonUrl, alias)
+	return Addresses{Connected: connected, AliasMatches: aliasMatches}
 }

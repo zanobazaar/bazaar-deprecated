@@ -5,6 +5,7 @@ export const DefaultContext = createContext(undefined);
 export const ContextProvider = (props) => {
     const [balance, setBalance] = useState(null);
     const [alias, setAlias] = useState("");
+    const [mode, setMode] = useState("");
 
     const [daemonUrl, setDaemonUrl] = useState(
         "http://127.0.0.1:11211/json_rpc"
@@ -28,6 +29,8 @@ export const ContextProvider = (props) => {
                 setWalletUrl,
                 walletConn,
                 setWalletConn,
+                mode,
+                setMode,
             }}
         >
             {props.children}

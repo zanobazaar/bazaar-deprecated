@@ -43,6 +43,39 @@ export const SidebarData = [
     },
 ];
 
+export const PartialSidebarData = [
+    {
+        title: "Dashboard",
+        icon: "📊",
+        link: "/",
+    },
+    {
+        title: "View Bazaars",
+        icon: "🛒",
+        link: "/bazaars",
+    },
+    {
+        title: "See all offers",
+        icon: "👀",
+        link: "/offers",
+    },
+    {
+        title: "Live chat",
+        icon: "💬",
+        link: "/chat",
+    },
+    {
+        title: "Settings",
+        icon: "⚙️",
+        link: "/settings",
+    },
+    {
+        title: "Donate",
+        icon: "💙",
+        link: "/donate",
+    },
+];
+
 export const InitSidebarData = [
     {
         title: "Getting Started",
