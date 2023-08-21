@@ -1,6 +1,7 @@
 package main
 
 import (
+	"changeme/pkg/wallet"
 	"context"
 )
 
@@ -20,7 +21,13 @@ func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 }
 
-// Greet returns a greeting for the given name
-func (a *App) CheckConnection(name string) bool {
-	return true
+type Addresses struct {
+	Address string `json:"address"`
+	Alias   string `json:"alias"`
+}
+
+// CheckConnection returns a greeting for the given name
+func (a *App) CheckConnection(walletUrl string, daemonUrl string) Addresses {
+	address, aliasMatch := wallet.CheckZanoServices(walletUrl, daemonUrl)
+	return Addresses{Address: address, Alias: aliasMatch}
 }
