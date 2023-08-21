@@ -25,8 +25,10 @@ export const Layout = () => {
 
     return (
         <div className="app flex flex-row">
-            {sidebar}
-            <div className="p-10">
+            <div className="sidebar fixed border-r-2 border-purple-700">
+                {sidebar}
+            </div>
+            <div className="main p-10 scroll-auto">
                 <Outlet />
             </div>
         </div>

@@ -24,6 +24,23 @@ export const Donate = () => {
                         </p>
                     </div>
                 </div>
+                <div className="p-8 rounded-lg shadow-lg card">
+                    <div>
+                        <img src={donate} width={350} alt="" srcset="" />
+                    </div>
+                    <div>
+                        <p>
+                            Community contributions towards open source projects
+                            have always been important for developers to make a
+                            living whilst serving the communities they're
+                            passionate about.{" "}
+                            <span className="text-purple-400">Zano Bazaar</span>{" "}
+                            is passionate about bringing the best privacy and
+                            anonymity preserving marketplace to the world,
+                            please consider leaving a donation for the cause.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     );

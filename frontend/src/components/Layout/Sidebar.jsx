@@ -11,7 +11,7 @@ export const Sidebar = () => {
     const { value, setValue } = useContext(DefaultContext);
 
     return (
-        <div className="sidebar border-r-2 border-purple-700">
+        <div className="">
             <div className="mb-10 mt-10 flex justify-center">
                 <img src={Logo} width={60} alt="" srcset="" />
             </div>
