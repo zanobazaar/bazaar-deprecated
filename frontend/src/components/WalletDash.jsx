@@ -3,7 +3,7 @@ import React from "react";
 export const WalletDash = () => {
     return (
         <div>
-            <h2 className="text-3xl text-purple-700">Connection(s)</h2>
+            <h2 className="text-3xl text-purple-700">Dashboard</h2>
 
             <div className="flex flex-row mt-20 space-x-8">
                 {/* balance */}

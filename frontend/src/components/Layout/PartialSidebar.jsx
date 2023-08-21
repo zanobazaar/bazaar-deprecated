@@ -6,7 +6,7 @@ import { PartialSidebarData } from "../../data/SidebarData";
 
 import Logo from "../../assets/images/bazaar.svg";
 
-export const InitSidebar = () => {
+export const PartialSidebar = () => {
     // context data
     const { value, setValue } = useContext(DefaultContext);
 
@@ -16,7 +16,7 @@ export const InitSidebar = () => {
                 <img src={Logo} width={60} alt="" srcset="" />
             </div>
             <ul>
-                {InitSidebarData.map((value, key) => {
+                {PartialSidebarData.map((value, key) => {
                     return (
                         <li key={key}>
                             <Link to={value.link}>

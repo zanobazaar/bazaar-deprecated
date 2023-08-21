@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { DefaultContext } from "../../contexts/MainContext";
 import { Link } from "react-router-dom";
 
-import { SidebarData } from "../../data/SidebarData";
+import { SidebarData, PartialSidebarData } from "../../data/SidebarData";
 
 import Logo from "../../assets/images/bazaar.svg";
 

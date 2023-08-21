@@ -10,6 +10,7 @@ import { MyBazaar } from "./components/MyBazaar";
 import { ManageOffers } from "./components/ManageOffers";
 import { SeeAllOffers } from "./components/SeeAllOffers";
 import { LiveChat } from "./components/LiveChat";
+import { Donate } from "./components/Donate";
 import { Settings } from "./components/Settings";
 
 import "./App.css";
@@ -26,6 +27,7 @@ const App = () => {
                         <Route path="/create" Component={ManageOffers} />
                         <Route path="/offers" Component={SeeAllOffers} />
                         <Route path="/chat" Component={LiveChat} />
+                        <Route path="/donate" Component={Donate} />
                         <Route path="/settings" Component={Settings} />
                     </Route>
                 </Routes>

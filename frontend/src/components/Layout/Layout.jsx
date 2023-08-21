@@ -4,18 +4,19 @@ import { DefaultContext } from "../../contexts/MainContext";
 
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
+import { PartialSidebar } from "./PartialSidebar";
 import { InitSidebar } from "./InitSidebar";
-import { PartialSidebarData } from "../../data/SidebarData";
 
 export const Layout = () => {
     const { walletConn, mode } = useContext(DefaultContext);
 
-    // change sidebar data based on whether daemon is connected
+    // change sidebar based on whether entered alias matches wallets alias
+    // TODO - move this check to sidebar by swithching impotred json data
     let sidebar, connections;
     if (walletConn && mode == "full") {
         sidebar = <Sidebar />;
     } else if (walletConn && mode == "partial") {
-        sidebar = <PartialSidebarData />;
+        sidebar = <PartialSidebar />;
     } else {
         sidebar = <InitSidebar />;
     }

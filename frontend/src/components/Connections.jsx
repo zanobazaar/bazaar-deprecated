@@ -29,6 +29,7 @@ export const Connections = () => {
                 if (result.alias) {
                     // enable full functionality
                     setMode("full");
+                    alert(mode);
                     setWalletConn(true);
                 } else {
                     //  enable partial functionality
