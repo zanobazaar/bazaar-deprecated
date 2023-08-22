@@ -12,7 +12,6 @@ export const Connections = () => {
         setWalletUrl,
         daemonUrl,
         setDaemonUrl,
-        mode,
         setMode,
     } = useContext(DefaultContext);
 
@@ -29,12 +28,10 @@ export const Connections = () => {
                 if (result.alias) {
                     // enable full functionality
                     setMode("full");
-                    alert(mode);
                     setWalletConn(true);
                 } else {
                     //  enable partial functionality
                     setMode("partial");
-                    alert(mode);
                     setWalletConn(true);
                 }
             }

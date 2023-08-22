@@ -3,6 +3,8 @@ import React, { useState, createContext } from "react";
 export const DefaultContext = createContext(undefined);
 
 export const ContextProvider = (props) => {
+    const [donateAddress, setDonateAddress] = useState("Zx...bazaar");
+
     const [balance, setBalance] = useState(null);
     const [alias, setAlias] = useState("");
     const [mode, setMode] = useState("");
@@ -19,6 +21,8 @@ export const ContextProvider = (props) => {
     return (
         <DefaultContext.Provider
             value={{
+                donateAddress,
+                daemonUrl,
                 balance,
                 setBalance,
                 alias,
