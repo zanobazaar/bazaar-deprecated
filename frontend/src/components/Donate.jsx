@@ -41,22 +41,16 @@ export const Donate = () => {
                         </p>
                     </div>
                     <div className="flex flex-col">
-                        <select
-                            value={"10"}
-                            className="mb-3 text-black"
-                            id="mySelect"
-                            onchange={(event) => {
+                        <input
+                            className="text-black mb-3 p-1 rounded"
+                            placeholder="100"
+                            type="number"
+                            name=""
+                            id=""
+                            onChange={(event) => {
                                 setAmount(event.target.value);
                             }}
-                        >
-                            <option value="10">10 $ZANO</option>
-                            <option value="30">30 $ZANO</option>
-                            <option value="50">50 $ZANO</option>
-                            <option value="100">100 $ZANO</option>
-                            <option value="200">200 $ZANO</option>
-                            <option value="500">500 $ZANO</option>
-                            <option value="1000">1000 $ZANO</option>
-                        </select>
+                        />
 
                         <button
                             className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
@@ -68,7 +62,7 @@ export const Donate = () => {
                         </button>
                         <p className="text-green-500">
                             To send a custom amount, use your wallet and send to
-                            alias @bazaar. {amount}
+                            alias @bazaar.
                         </p>
                     </div>
                 </div>
