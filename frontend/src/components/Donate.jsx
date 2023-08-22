@@ -6,12 +6,18 @@ import { SendDonation } from "../../wailsjs/go/main/App";
 import donate from "../assets/images/donate.png";
 
 export const Donate = () => {
-    const { donateAddress } = useContext(DefaultContext);
-    const [amount, setAmount] = useState("10");
+    const { donateAddress, walletUrl } = useContext(DefaultContext);
+    const [txid, setTxId] = useState("tx...");
+    const [amount, setAmount] = useState(0);
 
-    const donateTx = (amount) => {
-        SendDonation().then((result) => {
+    const donateRegex = "[0-9]";
+
+    const donateTx = () => {
+        alert(amount);
+        // TODO - return notification if not numbers/regex fail
+        SendDonation(amount, donateAddress, walletUrl).then((result) => {
             alert(result);
+            setTxId(result);
         });
     };
 
@@ -40,7 +46,7 @@ export const Donate = () => {
                             contribution to the Zano Ecosystem.
                         </p>
                     </div>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col break-all">
                         <input
                             className="text-black mb-3 p-1 rounded"
                             placeholder="100"
@@ -60,10 +66,7 @@ export const Donate = () => {
                         >
                             Donate Now
                         </button>
-                        <p className="text-green-500">
-                            To send a custom amount, use your wallet and send to
-                            alias @bazaar.
-                        </p>
+                        <p>txid: {txid}</p>
                     </div>
                 </div>
             </div>

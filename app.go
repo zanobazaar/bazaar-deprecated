@@ -3,6 +3,7 @@ package main
 import (
 	"changeme/pkg/wallet"
 	"context"
+	"strconv"
 )
 
 // App struct
@@ -33,6 +34,10 @@ func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) 
 	return Addresses{Connected: connected, AliasMatches: aliasMatches}
 }
 
-func (a *App) SendDonation(amount string, comment string) bool {
-	return true
+func (a *App) SendDonation(amount string, donateAddress string, walletUrl string) string {
+
+	zAmount, _ := strconv.ParseInt(amount, 10, 64)
+
+	txid := wallet.SendDonation(zAmount, donateAddress, walletUrl)
+	return txid
 }

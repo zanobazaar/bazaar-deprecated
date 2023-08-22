@@ -50,7 +50,7 @@ export const Connections = () => {
                         <h2 className="text-2xl">Initialize Bazaar</h2>
                         <p className="text-white">
                             Ensure the Zano Daemon and Simplewallet are running
-                            in RPC mode.
+                            in RPC mode before initialization.
                         </p>
                     </div>
                     {/*alias*/}

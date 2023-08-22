@@ -6,6 +6,6 @@ export function CheckConnection(arg1, arg2, arg3) {
   return window['go']['main']['App']['CheckConnection'](arg1, arg2, arg3);
 }
 
-export function SendDonation(arg1, arg2) {
-  return window['go']['main']['App']['SendDonation'](arg1, arg2);
+export function SendDonation(arg1, arg2, arg3) {
+  return window['go']['main']['App']['SendDonation'](arg1, arg2, arg3);
 }
