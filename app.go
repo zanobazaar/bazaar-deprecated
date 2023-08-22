@@ -32,3 +32,7 @@ func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) 
 	connected, aliasMatches := wallet.CheckZanoServices(walletUrl, daemonUrl, alias)
 	return Addresses{Connected: connected, AliasMatches: aliasMatches}
 }
+
+func (a *App) SendDonation(amount string, comment string) bool {
+	return true
+}

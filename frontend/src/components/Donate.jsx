@@ -1,15 +1,18 @@
 import React, { useState, useContext } from "react";
 import { DefaultContext } from "../contexts/MainContext";
 
+import { SendDonation } from "../../wailsjs/go/main/App";
+
 import donate from "../assets/images/donate.png";
 
 export const Donate = () => {
     const { donateAddress } = useContext(DefaultContext);
-    const [amound, setAmount] = useState(0);
+    const [amount, setAmount] = useState("10");
 
-    //
-    const sendTx = () => {
-        alert("sending tx");
+    const donateTx = (amount) => {
+        SendDonation().then((result) => {
+            alert(result);
+        });
     };
 
     return (
@@ -39,9 +42,12 @@ export const Donate = () => {
                     </div>
                     <div className="flex flex-col">
                         <select
+                            value={"10"}
                             className="mb-3 text-black"
                             id="mySelect"
-                            onchange={() => {}}
+                            onchange={(event) => {
+                                setAmount(event.target.value);
+                            }}
                         >
                             <option value="10">10 $ZANO</option>
                             <option value="30">30 $ZANO</option>
@@ -52,12 +58,17 @@ export const Donate = () => {
                             <option value="1000">1000 $ZANO</option>
                         </select>
 
-                        <button className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2">
+                        <button
+                            className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
+                            onClick={() => {
+                                donateTx();
+                            }}
+                        >
                             Donate Now
                         </button>
                         <p className="text-green-500">
                             To send a custom amount, use your wallet and send to
-                            alias @bazaar.
+                            alias @bazaar. {amount}
                         </p>
                     </div>
                 </div>
