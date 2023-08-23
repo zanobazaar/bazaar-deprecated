@@ -26,7 +26,7 @@ func DonationTx(zanoAmount int64, donateAddress string, walletUrl string) string
 		"destinations": [
       {
         "address": "%s",
-        "amount": %d,
+        "amount": %v,
         "asset_id": ""
       }
     ],
@@ -66,8 +66,8 @@ func DonationTx(zanoAmount int64, donateAddress string, walletUrl string) string
 
 func SendDonation(amount int64, donateAddress string, walletUrl string) string {
 
-	zanoAmount := amount + 000000000000
-	fmt.Println(zanoAmount)
+	zanoAmount := amount + 000000000000 // TODO - fix this so it sends correct amount
+
 	txid := DonationTx(zanoAmount, donateAddress, walletUrl)
 	return txid
 }

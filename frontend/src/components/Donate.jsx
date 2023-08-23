@@ -7,7 +7,7 @@ import donate from "../assets/images/donate.png";
 
 export const Donate = () => {
     const { donateAddress, walletUrl } = useContext(DefaultContext);
-    const [txid, setTxId] = useState("tx...");
+    const [txid, setTxId] = useState("");
     const [amount, setAmount] = useState(0);
 
     const donateRegex = "[0-9]";
@@ -16,7 +16,6 @@ export const Donate = () => {
         alert(amount);
         // TODO - return notification if not numbers/regex fail
         SendDonation(amount, donateAddress, walletUrl).then((result) => {
-            alert(result);
             setTxId(result);
         });
     };
@@ -25,7 +24,7 @@ export const Donate = () => {
         <div className="flex flex-col">
             <h2 className="text-3xl text-purple-700">Donate</h2>
             <div className="flex flex-row mt-20 space-x-8 text-white text-xl">
-                <div className="flex flex-col border-2 w-1/2 border-purple-700 p-8 rounded-lg shadow-lg card">
+                <div className="flex flex-col w-1/2 p-8 rounded-lg shadow-lg card">
                     <div>
                         <img src={donate} width={350} alt="" srcset="" />
                     </div>
@@ -38,7 +37,7 @@ export const Donate = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex flex-col align-bottom justify-center border-2 w-1/2 border-sky-400 p-8 rounded-lg shadow-lg card">
+                <div className="flex flex-col align-bottom justify-center w-1/2 p-8 rounded-lg shadow-lg card">
                     <div className="mb-3">
                         <h1 className="text-4xl mb-3">Donation 💙</h1>
                         <p>
@@ -47,6 +46,7 @@ export const Donate = () => {
                         </p>
                     </div>
                     <div className="flex flex-col break-all">
+                        <span className="text-sm">Amount in $ZANO</span>
                         <input
                             className="text-black mb-3 p-1 rounded"
                             placeholder="100"
@@ -66,7 +66,8 @@ export const Donate = () => {
                         >
                             Donate Now
                         </button>
-                        <p>txid: {txid}</p>
+                        <br />
+                        <p className="text-sm text-sky-400">txid: {txid}</p>
                     </div>
                 </div>
             </div>
