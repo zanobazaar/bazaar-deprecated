@@ -8,7 +8,11 @@ import { Dashboard } from "./components/Dashboard";
 import { Bazaars } from "./components/Bazaars";
 import { MyBazaar } from "./components/MyBazaar";
 import { ManageOffers } from "./components/ManageOffers";
+import { CreateOffer } from "./components/CreateOffer";
+import { UpdateOffer } from "./components/UpdateOffer";
+import { CancelOffer } from "./components/CancelOffer";
 import { SeeAllOffers } from "./components/SeeAllOffers";
+import { OnionLinks } from "./components/OnionLinks";
 import { LiveChat } from "./components/LiveChat";
 import { Donate } from "./components/Donate";
 import { Settings } from "./components/Settings";
@@ -26,6 +30,10 @@ const App = () => {
                         <Route path="/mybazaar" Component={MyBazaar} />
                         <Route path="/create" Component={ManageOffers} />
                         <Route path="/offers" Component={SeeAllOffers} />
+                        <Route path="/createoffer" Component={CreateOffer} />
+                        <Route path="/updateoffer" Component={UpdateOffer} />
+                        <Route path="/canceloffer" Component={CancelOffer} />
+                        <Route path="/onionlinks" Component={OnionLinks} />
                         <Route path="/chat" Component={LiveChat} />
                         <Route path="/donate" Component={Donate} />
                         <Route path="/settings" Component={Settings} />

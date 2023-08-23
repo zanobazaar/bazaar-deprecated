@@ -27,6 +27,11 @@ export const SidebarData = [
         link: "/offers",
     },
     {
+        title: "Onion links",
+        icon: "🧅",
+        link: "/onionlinks",
+    },
+    {
         title: "Live chat",
         icon: "💬",
         link: "/chat",
@@ -58,6 +63,11 @@ export const PartialSidebarData = [
         title: "See all offers",
         icon: "👀",
         link: "/offers",
+    },
+    {
+        title: "Onion links",
+        icon: "🧅",
+        link: "/onionlinks",
     },
     {
         title: "Live chat",

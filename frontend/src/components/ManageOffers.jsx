@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 export const ManageOffers = () => {
     return (
         <div className="flex flex-col">
@@ -13,14 +15,11 @@ export const ManageOffers = () => {
                             'Create offer' button and lets goo.
                         </p>
                     </div>
-                    <button
-                        className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
-                        onClick={() => {
-                            alert("");
-                        }}
-                    >
-                        Create offer
-                    </button>
+                    <Link to="/createoffer">
+                        <button className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2">
+                            Create offer
+                        </button>
+                    </Link>
                 </div>
                 <div className="flex flex-col align-bottom justify-center w-1/3 p-8 rounded-lg shadow-lg card">
                     <div className="mb-3">
@@ -30,14 +29,11 @@ export const ManageOffers = () => {
                             the below button to update.
                         </p>
                     </div>
-                    <button
-                        className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
-                        onClick={() => {
-                            alert("");
-                        }}
-                    >
-                        Update offer
-                    </button>
+                    <Link to="/updateoffer">
+                        <button className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2">
+                            Update offer
+                        </button>
+                    </Link>
                 </div>
                 <div className="flex flex-col align-bottom justify-center w-1/3 p-8 rounded-lg shadow-lg card">
                     <div className="mb-3">
@@ -47,14 +43,11 @@ export const ManageOffers = () => {
                             the button below and go paste it.
                         </p>
                     </div>
-                    <button
-                        className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
-                        onClick={() => {
-                            alert("");
-                        }}
-                    >
-                        Cancel offer
-                    </button>
+                    <Link to="/canceloffer">
+                        <button className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2">
+                            Cancel offer
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
