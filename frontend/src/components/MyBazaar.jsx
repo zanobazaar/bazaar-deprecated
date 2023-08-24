@@ -1,9 +1,17 @@
 import React from "react";
 
+import { CreateMyBazaar } from "./CreateMyBazaar";
+import { UpdateMyBazaar } from "./UpdateMyBazaar";
+
 export const MyBazaar = () => {
-    return (
-        <div>
-            <h2 className="text-3xl text-purple-700">My Bazaar</h2>
-        </div>
-    );
+    let bazaarExists = false;
+    let myBazaarMode;
+
+    if (bazaarExists) {
+        myBazaarMode = <UpdateMyBazaar />;
+    } else {
+        myBazaarMode = <CreateMyBazaar />;
+    }
+
+    return <div className="flex flex-col">{myBazaarMode}</div>;
 };

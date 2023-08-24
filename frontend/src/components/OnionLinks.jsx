@@ -17,6 +17,10 @@ export const OnionLinks = () => {
                         <p>
                             Advertise your Tor hidden service's URL right here
                             in the Bazaar onion directory to reach all users.
+                            Dont forget to{" "}
+                            <span className="text-purple-400">
+                                reference your Zano Alias on the hidden service!
+                            </span>
                         </p>
                     </div>
                 </div>
