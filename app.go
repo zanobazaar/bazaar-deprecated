@@ -34,10 +34,10 @@ func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) 
 	return Addresses{Connected: connected, AliasMatches: aliasMatches}
 }
 
-func (a *App) VendorExistsCheck() bool {
+func (a *App) VendorExistsCheck(alias string) bool {
 
-	//vendorExists := market.VendorCheck()
-	return false
+	vendorExists := market.VendorCheck(alias)
+	return vendorExists
 }
 
 func (a *App) CreateBazaar(walletUrl string, title string, conditions string, comments string, category string, paymentType string, locationCountry string, locationCity string, url string) string {

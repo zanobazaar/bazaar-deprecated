@@ -14,6 +14,6 @@ export function SendDonation(arg1, arg2, arg3) {
   return window['go']['main']['App']['SendDonation'](arg1, arg2, arg3);
 }
 
-export function VendorExistsCheck() {
-  return window['go']['main']['App']['VendorExistsCheck']();
+export function VendorExistsCheck(arg1) {
+  return window['go']['main']['App']['VendorExistsCheck'](arg1);
 }

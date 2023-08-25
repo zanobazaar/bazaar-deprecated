@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { DefaultContext } from "../contexts/MainContext";
+
 
 import {VendorExistsCheck} from "../../wailsjs/go/main/App";
 
@@ -7,11 +9,13 @@ import { CreateMyBazaar } from "./CreateMyBazaar";
 import { UpdateMyBazaar } from "./UpdateMyBazaar";
 
 export const MyBazaar = () => {
+    const { alias } = useContext(DefaultContext);
+
     const [bazaarExists, setBazaarExists] = useState(false);
     let myBazaarMode;
 
     useEffect(() => {
-        VendorExistsCheck().then((result) => {
+        VendorExistsCheck(alias).then((result) => {
             setBazaarExists(result)
             if(setBazaarExists) {
                 myBazaarMode = <UpdateMyBazaar />;

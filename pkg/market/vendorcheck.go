@@ -1,5 +1,8 @@
 package market
 
-func VendorCheck() bool {
-	return false
+import "fmt"
+
+func VendorCheck(alias string) bool {
+	fmt.Println(alias)
+	return true
 }
