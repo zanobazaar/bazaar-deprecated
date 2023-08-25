@@ -93,7 +93,7 @@ func BazaarCheck(alias string, walletUrl string) bool {
 
 	_ = json.Unmarshal([]byte(body), &data)
 
-	currentVendor := fmt.Sprintf("vendors:%s", alias)
+	currentVendor := fmt.Sprintf("vendor:%s", alias)
 
 	for _, offer := range data.Result.Offers {
 		if currentVendor == offer.Cnt {

@@ -45,8 +45,8 @@ export const CreateMyBazaar = () => {
             <div className="mb-20">
                 <h2 className="text-3xl text-purple-700">Create Bazaar</h2>
             </div>
-            <div className="grid grid-cols-2 gap-4 ">
-                <div className="grid grid-cols-2 gap-4 prod-card break-words shadow-lg">
+            <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4 prod-card break-words shadow-lg rounded-lg">
                     <div className="flex flex-col mb-3">
                         <span>Title:</span>
                         <input
@@ -140,7 +140,7 @@ export const CreateMyBazaar = () => {
                         </div>
                     </div>
                 </div>
-                <div className="prod-card">
+                <div className="prod-card rounded-lg">
                     <div className="offer-card break-words border-2 border-purple-700 rounded-lg p-2">
                         <div className="mb-3">
                             <img className="rounded-lg" src={category} alt="" />

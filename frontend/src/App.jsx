@@ -13,6 +13,7 @@ import { UpdateOffer } from "./components/UpdateOffer";
 import { CancelOffer } from "./components/CancelOffer";
 import { SeeAllOffers } from "./components/SeeAllOffers";
 import { OnionLinks } from "./components/OnionLinks";
+import { AliasMarket } from "./components/AliasMarket";
 import { LiveChat } from "./components/LiveChat";
 import { Donate } from "./components/Donate";
 import { Settings } from "./components/Settings";
@@ -34,6 +35,7 @@ const App = () => {
                         <Route path="/updateoffer" Component={UpdateOffer} />
                         <Route path="/canceloffer" Component={CancelOffer} />
                         <Route path="/onionlinks" Component={OnionLinks} />
+                        <Route path="/aliasmarket" Component={AliasMarket} />
                         <Route path="/chat" Component={LiveChat} />
                         <Route path="/donate" Component={Donate} />
                         <Route path="/settings" Component={Settings} />
