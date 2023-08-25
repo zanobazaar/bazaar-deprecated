@@ -17,30 +17,30 @@ type Tx struct {
 	} `json:"result"`
 }
 
-func OfferTx(walletUrl string) string {
-	jsonBody := fmt.Sprintln(`{
+func OfferTx(walletUrl string, title string, comments string, conditions string, category string, paymentType string, locationCountry string, locationCity string, url string) string {
+	jsonBody := fmt.Sprintf(`{
 	"jsonrpc": "2.0",
 	"id": "0",
 	"method": "marketplace_push_offer",
 	"params": {
 		"od": {
-			"ap": "1000",
-			"at": "1",
-			"cat": "CLS:MAN:TSH",
-			"cnt": "https://zanobazaar.com",
-			"com": "This field is where you write a detailed overview of your product or service, make it good",
-			"do": "ZxDNaMeZjwCjnHuU5gUNyrP1pM3U5vckbakzzV6dEHyDYeCpW8XGLBFTshcaY8LkG9RQn7FsQx8w2JeJzJwPwuDm2NfixPAXf",
-			"et": 10,
+			"ap": "",
+			"at": "",
+			"cat": "%s",
+			"cnt": "%s",
+			"com": "%s",
+			"do": "",
+			"et": 2,
 			"fee": 10000000000,
-			"lci": "THE ZANOVERSE",
-			"lco": "Decentralized",
+			"lci": "%s",
+			"lco": "%s",
 			"ot": 3,
-			"pt": "$ZANO",
-			"t": "Product Title",
-			"url": "QmVWxCy7JyEuvxMPpcQ4jBzsRxtMFjbF6VGMc4CGuN6iqK"
+			"pt": "%s",
+			"t": "%s",
+			"url": "%s"
 		}
 	}
-}`)
+}`, category, conditions, comments, locationCity, locationCountry, paymentType, title, url)
 
 	request, err := http.NewRequest("POST", walletUrl, bytes.NewBuffer([]byte(jsonBody)))
 	if err != nil {
@@ -68,7 +68,7 @@ func OfferTx(walletUrl string) string {
 	return data.Result.TxHash
 }
 
-func PushOffer(walletUrl string) string {
-	txid := OfferTx(walletUrl)
+func PushOffer(walletUrl string, title string, conditions string, comments string, category string, paymentType string, locationCountry string, locationCity string, url string) string {
+	txid := OfferTx(walletUrl, title, conditions, comments, category, paymentType, locationCountry, locationCity, url)
 	return txid
 }

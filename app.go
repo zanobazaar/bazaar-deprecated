@@ -35,9 +35,9 @@ func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) 
 	return Addresses{Connected: connected, AliasMatches: aliasMatches}
 }
 
-func (a *App) CreateBazaar(walletUrl string) string {
+func (a *App) CreateBazaar(walletUrl string, title string, conditions string, comments string, category string, paymentType string, locationCountry string, locationCity string, url string) string {
 
-	pushed := market.PushOffer(walletUrl)
+	pushed := market.PushOffer(walletUrl, title, comments, conditions, category, paymentType, locationCountry, locationCity, url)
 	return pushed
 }
 

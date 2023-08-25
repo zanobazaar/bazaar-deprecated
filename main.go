@@ -18,7 +18,7 @@ func main() {
 	// Create application with options
 	err := wails.Run(&options.App{
 		Title:     "Zano Bazaar",
-		Width:     1194,
+		Width:     1288,
 		Height:    768,
 		MinWidth:  1194,
 		MinHeight: 768,

@@ -22,8 +22,8 @@ export const Donate = () => {
 
     return (
         <div className="flex flex-col">
-            <h2 className="text-3xl text-purple-700">Donate</h2>
-            <div className="flex flex-row mt-20 space-x-8 text-white text-xl">
+            <h2 className="text-3xl mb-20 text-purple-700">Donate</h2>
+            <div className="flex flex-row space-x-8 text-white text-xl">
                 <div className="flex flex-col w-1/2 p-8 rounded-lg shadow-lg card">
                     <div>
                         <img src={donate} width={350} alt="" srcset="" />
@@ -45,7 +45,7 @@ export const Donate = () => {
                             contribution to the Zano Ecosystem.
                         </p>
                     </div>
-                    <div className="flex flex-col break-all">
+                    <div className="flex flex-col break-words">
                         <span className="text-sm">Amount in $ZANO</span>
                         <input
                             className="text-black mb-3 p-1 rounded"

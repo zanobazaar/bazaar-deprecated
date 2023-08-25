@@ -21,4 +21,13 @@
 
 .prod-card {
     background-color: #22272e;
+    padding: 1em;
+}
+
+.prod-card input {
+    color: black;
+    padding: 0.3em;
+}
+
+.offer-card {
 }
