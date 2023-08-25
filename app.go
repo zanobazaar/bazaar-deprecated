@@ -18,7 +18,6 @@ func NewApp() *App {
 }
 
 // startup is called when the app starts. The context is saved
-// so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 }
@@ -35,9 +34,10 @@ func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) 
 	return Addresses{Connected: connected, AliasMatches: aliasMatches}
 }
 
-func (a *App) VendorExistsCheck(amount string, donateAddress string, walletUrl string) bool {
+func (a *App) VendorExistsCheck() bool {
 
-	return true
+	//vendorExists := market.VendorCheck()
+	return false
 }
 
 func (a *App) CreateBazaar(walletUrl string, title string, conditions string, comments string, category string, paymentType string, locationCountry string, locationCity string, url string) string {

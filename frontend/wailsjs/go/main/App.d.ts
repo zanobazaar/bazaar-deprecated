@@ -8,4 +8,4 @@ export function CreateBazaar(arg1:string,arg2:string,arg3:string,arg4:string,arg
 
 export function SendDonation(arg1:string,arg2:string,arg3:string):Promise<string>;
 
-export function VendorExistsCheck(arg1:string,arg2:string,arg3:string):Promise<boolean>;
+export function VendorExistsCheck():Promise<boolean>;
