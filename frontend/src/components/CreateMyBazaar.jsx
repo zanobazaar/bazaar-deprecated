@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { DefaultContext } from "../contexts/MainContext";
+
+import { CreateBazaar } from "../../wailsjs/go/main/App";
 
 export const CreateMyBazaar = () => {
+
+    const { walletUrl } = useContext(DefaultContext);
+
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [acceptedPayments, setAcceptedPayments] = useState("");
@@ -8,16 +14,21 @@ export const CreateMyBazaar = () => {
     const [imageUrl, setImageUrl] = useState("");
     const [price, setPrice] = useState(0);
     const [shipping, setShipping] = useState("");
+    const [siteUrl, setSiteUrl] = useState("");
+
+    const bazaarCreation = () => {
+        CreateBazaar(walletUrl).then((result) => {
+            alert(result);
+        });
+    };
 
     return (
         <div className="flex flex-col">
             <h2 className="text-3xl text-purple-700">My Bazaar</h2>
-            <p className="text-xl text-red-400">
-                🤚 No on-chain Bazaar's match your alias, create one now!
-            </p>
+
             <div className="flex flex-row mt-20 space-x-8 text-white text-xl">
                 {/* Bazaar creation form */}
-                <div className="flex flex-col w-1/2 p-8 rounded-lg shadow-lg card">
+                <div className="flex flex-col p-8 rounded-lg shadow-lg card">
                     <h1 className="text-2xl mb-3">Create Bazaar</h1>
                     <div className="mb-3">
                         <p>
@@ -130,9 +141,24 @@ export const CreateMyBazaar = () => {
                             }}
                         />
                     </div>
+                    {/* web presence */}
+                    <div className="flex flex-col">
+                        <span className="text-sm">Vendor URL</span>
+                        <input
+                            className="text-black mb-3 p-1 rounded"
+                            placeholder="http://..."
+                            type="text"
+                            name=""
+                            value={siteUrl}
+                            id=""
+                            onChange={(event) => {
+                                setSiteUrl(event.target.value);
+                            }}
+                        />
+                    </div>
                 </div>
                 {/* Bazaar card preview */}
-                <div className="flex flex-col align-bottom justify-center w-1/2 p-8 rounded-lg shadow-lg card break-words">
+                <div className="flex flex-col align-bottom w-1/2 justify-center p-8 rounded-lg shadow-lg card break-words">
                     <div className="prod-card">
                         <div className="image mb-3">
                             <img className="rounded-lg" src={imageUrl} alt="" />
@@ -154,6 +180,9 @@ export const CreateMyBazaar = () => {
                         <div className="location mb-3">
                             Shiping to: {shipping}
                         </div>
+                        <div className="location mb-3">
+                            Shiping to: {siteUrl}
+                        </div>
                         <div className="footer">{price} $ZANO</div>
                     </div>
                     <div className="p-3">
@@ -163,7 +192,7 @@ export const CreateMyBazaar = () => {
                         <button
                             className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
                             onClick={() => {
-                                alert("Creating Bazaar");
+                                bazaarCreation();
                             }}
                         >
                             Create Bazaar

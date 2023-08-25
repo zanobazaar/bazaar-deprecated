@@ -32,6 +32,11 @@ export const SidebarData = [
         link: "/onionlinks",
     },
     {
+        title: "Alias market",
+        icon: "🎭",
+        link: "/aliasmarket",
+    },
+    {
         title: "Live chat",
         icon: "💬",
         link: "/chat",
@@ -68,6 +73,11 @@ export const PartialSidebarData = [
         title: "Onion links",
         icon: "🧅",
         link: "/onionlinks",
+    },
+    {
+        title: "Alias market",
+        icon: "🎭",
+        link: "/aliasmarket",
     },
     {
         title: "Live chat",

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"changeme/pkg/market"
 	"changeme/pkg/wallet"
 	"context"
 	"strconv"
@@ -32,6 +33,12 @@ func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) 
 
 	connected, aliasMatches := wallet.CheckZanoServices(walletUrl, daemonUrl, alias)
 	return Addresses{Connected: connected, AliasMatches: aliasMatches}
+}
+
+func (a *App) CreateBazaar(walletUrl string) string {
+
+	pushed := market.PushOffer(walletUrl)
+	return pushed
 }
 
 func (a *App) SendDonation(amount string, donateAddress string, walletUrl string) string {

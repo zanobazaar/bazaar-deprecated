@@ -6,6 +6,10 @@ export function CheckConnection(arg1, arg2, arg3) {
   return window['go']['main']['App']['CheckConnection'](arg1, arg2, arg3);
 }
 
+export function CreateBazaar() {
+  return window['go']['main']['App']['CreateBazaar']();
+}
+
 export function SendDonation(arg1, arg2, arg3) {
   return window['go']['main']['App']['SendDonation'](arg1, arg2, arg3);
 }
