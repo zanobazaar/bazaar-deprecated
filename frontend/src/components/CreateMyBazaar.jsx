@@ -11,14 +11,14 @@ export const CreateMyBazaar = () => {
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
     const [itemAmount, setItemAmount] = useState("");
-    const [category, setCategory] = useState("vendor");
+    const [category, setCategory] = useState("");
     const [contactDetails, setContactDetails] = useState("");
     const [comments, setComments] = useState(""); // title
-    const [conditions, setConditions] = useState(alias);
+    const [conditions, setConditions] = useState(`vendor:${alias}`);
     const [expire, setExpire] = useState("");
     const [locationCity, setLocationCity] = useState("");
     const [locationCountry, setLocationCountry] = useState("");
-    const [offerType, setOfferType] = useState("");
+    const [offerType, setOfferType] = useState(3);
     const [paymentType, setPaymentType] = useState("");
     const [url, setUrl] = useState("");
 
