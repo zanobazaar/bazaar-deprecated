@@ -17,7 +17,7 @@ type Tx struct {
 	} `json:"result"`
 }
 
-func DonationTx(zanoAmount int64, donateAddress string, walletUrl string) string {
+func DonationTx(zanoAmount uint64, donateAddress string, walletUrl string) string {
 	jsonBody := fmt.Sprintf(`{
 	"jsonrpc": "2.0",
 	"id": 0,
@@ -64,7 +64,7 @@ func DonationTx(zanoAmount int64, donateAddress string, walletUrl string) string
 	return data.Result.TxHash
 }
 
-func SendDonation(amount int64, donateAddress string, walletUrl string) string {
+func SendDonation(amount uint64, donateAddress string, walletUrl string) string {
 
 	zanoAmount := amount + 000000000000 // TODO - fix this so it sends correct amount
 

@@ -9,13 +9,13 @@ import { CreateMyBazaar } from "./CreateMyBazaar";
 import { UpdateMyBazaar } from "./UpdateMyBazaar";
 
 export const MyBazaar = () => {
-    const { alias } = useContext(DefaultContext);
+    const { alias, walletUrl } = useContext(DefaultContext);
 
     const [bazaarExists, setBazaarExists] = useState(false);
     let myBazaarMode;
 
     useEffect(() => {
-        VendorExistsCheck(alias).then((result) => {
+        VendorExistsCheck(alias, walletUrl).then((result) => {
             setBazaarExists(result)
             if(setBazaarExists) {
                 myBazaarMode = <UpdateMyBazaar />;

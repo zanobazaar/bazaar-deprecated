@@ -34,9 +34,8 @@ func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) 
 	return Addresses{Connected: connected, AliasMatches: aliasMatches}
 }
 
-func (a *App) VendorExistsCheck(alias string) bool {
-
-	vendorExists := market.VendorCheck(alias)
+func (a *App) VendorExistsCheck(alias string, walletUrl string) bool {
+	vendorExists := market.VendorCheck(alias, walletUrl)
 	return vendorExists
 }
 
@@ -48,7 +47,7 @@ func (a *App) CreateBazaar(walletUrl string, title string, conditions string, co
 
 func (a *App) SendDonation(amount string, donateAddress string, walletUrl string) string {
 
-	zAmount, _ := strconv.ParseInt(amount, 10, 64)
+	zAmount, _ := strconv.ParseUint(amount, 10, 64)
 
 	txid := wallet.SendDonation(zAmount, donateAddress, walletUrl)
 	return txid
