@@ -6,8 +6,8 @@ export function CheckConnection(arg1, arg2, arg3) {
   return window['go']['main']['App']['CheckConnection'](arg1, arg2, arg3);
 }
 
-export function CreateBazaar() {
-  return window['go']['main']['App']['CreateBazaar']();
+export function CreateBazaar(arg1) {
+  return window['go']['main']['App']['CreateBazaar'](arg1);
 }
 
 export function SendDonation(arg1, arg2, arg3) {

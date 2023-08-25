@@ -4,6 +4,6 @@ import {main} from '../models';
 
 export function CheckConnection(arg1:string,arg2:string,arg3:string):Promise<main.Addresses>;
 
-export function CreateBazaar():Promise<boolean>;
+export function CreateBazaar(arg1:string):Promise<string>;
 
 export function SendDonation(arg1:string,arg2:string,arg3:string):Promise<string>;
