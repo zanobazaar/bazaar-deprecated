@@ -10,6 +10,10 @@ export function CreateBazaar(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg
   return window['go']['main']['App']['CreateBazaar'](arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
+export function FetchOffers(arg1) {
+  return window['go']['main']['App']['FetchOffers'](arg1);
+}
+
 export function SendDonation(arg1, arg2, arg3) {
   return window['go']['main']['App']['SendDonation'](arg1, arg2, arg3);
 }

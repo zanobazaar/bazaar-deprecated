@@ -29,9 +29,14 @@ type Addresses struct {
 
 // CheckConnection returns a greeting for the given name
 func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) Addresses {
-
 	connected, aliasMatches := wallet.CheckZanoServices(walletUrl, daemonUrl, alias)
 	return Addresses{Connected: connected, AliasMatches: aliasMatches}
+}
+
+// TODO - fix strange loop
+func (a *App) FetchOffers(daemonUrl string) market.Offers {
+	offers := market.GetAllOffers(daemonUrl)
+	return offers
 }
 
 func (a *App) VendorExistsCheck(alias string, daemonUrl string) bool {
@@ -40,15 +45,12 @@ func (a *App) VendorExistsCheck(alias string, daemonUrl string) bool {
 }
 
 func (a *App) CreateBazaar(walletUrl string, title string, conditions string, comments string, category string, paymentType string, locationCountry string, locationCity string, url string) string {
-
 	pushed := market.PushOffer(walletUrl, title, comments, conditions, category, paymentType, locationCountry, locationCity, url)
 	return pushed
 }
 
 func (a *App) SendDonation(amount string, donateAddress string, walletUrl string) string {
-
 	zAmount, _ := strconv.ParseUint(amount, 10, 64)
-
 	txid := wallet.SendDonation(zAmount, donateAddress, walletUrl)
 	return txid
 }

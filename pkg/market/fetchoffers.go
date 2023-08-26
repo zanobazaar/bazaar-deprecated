@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func GetOffersGlobalTx() {
+func GetOffersGlobalTx(daemonUrl string) Offers {
 	jsonBody := fmt.Sprintln(`{
 		"jsonrpc": "2.0",
 		"id": "0",
@@ -61,17 +61,10 @@ func GetOffersGlobalTx() {
 
 	_ = json.Unmarshal([]byte(body), &data)
 
-	currentVendor := fmt.Sprintf("vendor:%s", alias)
-
-	for _, offer := range data.Result.Offers {
-		if currentVendor == offer.Cnt {
-			return true
-		}
-	}
-
-	return false
+	return data
 }
 
-func GetAllOffers() bool {
-	return true
+func GetAllOffers(daemonUrl string) Offers {
+	offers := GetOffersGlobalTx(daemonUrl)
+	return offers
 }

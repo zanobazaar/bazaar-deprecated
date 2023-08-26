@@ -29,5 +29,9 @@
     padding: 0.3em;
 }
 
-.offer-card {
+.table-striped-rows tr:nth-child(2n) td {
+    background-color: #22272e;
+}
+.table-striped-rows thead {
+    background-color: #7e4798;
 }
