@@ -34,8 +34,8 @@ func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) 
 	return Addresses{Connected: connected, AliasMatches: aliasMatches}
 }
 
-func (a *App) VendorExistsCheck(alias string, walletUrl string) bool {
-	vendorExists := market.VendorCheck(alias, walletUrl)
+func (a *App) VendorExistsCheck(alias string, daemonUrl string) bool {
+	vendorExists := market.VendorCheck(alias, daemonUrl)
 	return vendorExists
 }
 
