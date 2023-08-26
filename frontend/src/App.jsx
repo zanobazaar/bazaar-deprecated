@@ -12,7 +12,7 @@ import { CreateOffer } from "./components/CreateOffer";
 import { UpdateOffer } from "./components/UpdateOffer";
 import { CancelOffer } from "./components/CancelOffer";
 import { SeeAllOffers } from "./components/SeeAllOffers";
-import { OnionLinks } from "./components/OnionLinks";
+import { OnionDirectory } from "./components/OnionDirectory";
 import { AliasMarket } from "./components/AliasMarket";
 import { LiveChat } from "./components/LiveChat";
 import { Donate } from "./components/Donate";
@@ -34,7 +34,10 @@ const App = () => {
                         <Route path="/createoffer" Component={CreateOffer} />
                         <Route path="/updateoffer" Component={UpdateOffer} />
                         <Route path="/canceloffer" Component={CancelOffer} />
-                        <Route path="/onionlinks" Component={OnionLinks} />
+                        <Route
+                            path="/oniondirectory"
+                            Component={OnionDirectory}
+                        />
                         <Route path="/aliasmarket" Component={AliasMarket} />
                         <Route path="/chat" Component={LiveChat} />
                         <Route path="/donate" Component={Donate} />

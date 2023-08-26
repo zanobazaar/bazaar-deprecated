@@ -27,9 +27,9 @@ export const SidebarData = [
         link: "/offers",
     },
     {
-        title: "Onion links",
+        title: "Onion directory",
         icon: "🧅",
-        link: "/onionlinks",
+        link: "/oniondirectory",
     },
     {
         title: "Alias market",
@@ -70,9 +70,9 @@ export const PartialSidebarData = [
         link: "/offers",
     },
     {
-        title: "Onion links",
+        title: "Onion directory",
         icon: "🧅",
-        link: "/onionlinks",
+        link: "/oniondirectory",
     },
     {
         title: "Alias market",
