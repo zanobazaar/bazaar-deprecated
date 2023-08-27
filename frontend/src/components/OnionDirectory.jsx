@@ -53,13 +53,19 @@ export const OnionDirectory = () => {
                                                 key={index}
                                             >
                                                 <td className="p-2">
-                                                    {offers[index].t}
+                                                    <p className="text-md">
+                                                        {offers[index].t}
+                                                    </p>
                                                 </td>
                                                 <td className="p-2">
-                                                    {offers[index].com}
+                                                    <p className="text-md">
+                                                        {offers[index].com}
+                                                    </p>
                                                 </td>
                                                 <td className="p-2 break-all">
-                                                    {offers[index].url}
+                                                    <p className="text-md">
+                                                        {offers[index].url}
+                                                    </p>
                                                 </td>
                                             </tr>
                                         );

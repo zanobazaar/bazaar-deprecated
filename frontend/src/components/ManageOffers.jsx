@@ -1,14 +1,28 @@
 import React, { useState, useContext } from "react";
 
 import { DefaultContext } from "../contexts/MainContext";
-import { Link } from "react-router-dom";
+
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 export const ManageOffers = () => {
     const {} = useContext(DefaultContext);
     return (
         <div className="flex flex-col">
             {/* main container */}
-            <div className="grid grid-cols-3 gap-5 mt-10">
+            <div className="mt-10 mb-5">
+                <h2 className="text-2xl">Offer management</h2>
+            </div>
+
+            <div className="grid grid-cols-2 gap-5 ">
                 <div className="dash-card rounded-lg shadow-lg">
                     <h1 className="text-2xl mb-5">✅ Create offer</h1>
                     <p className="text-xl mb-5">
@@ -24,33 +38,44 @@ export const ManageOffers = () => {
                     </button>
                 </div>
                 <div className="dash-card rounded-lg shadow-lg">
-                    <h1 className="text-2xl mb-5">📝 Update offer</h1>
+                    <h1 className="text-2xl mb-5">📝 Current offers</h1>
                     <p className="text-xl mb-5">
-                        Update an existing, live offer on the Zano Blockchain.
+                        To update or cancel a live offer, navigate to the
+                        relevant offer and hit update or cancel.
                     </p>
-                    <button
-                        className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
-                        onClick={() => {
-                            alert("doin bits");
-                        }}
+                    <Swiper
+                        // install Swiper modules
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        spaceBetween={50}
+                        slidesPerView={1}
+                        pagination={{ clickable: true }}
+                        scrollbar={{ draggable: true }}
+                        onSwiper={(swiper) => console.log(swiper)}
+                        onSlideChange={() => console.log("slide change")}
                     >
-                        Update offer
-                    </button>
-                </div>
-                <div className="dash-card rounded-lg shadow-lg">
-                    <h1 className="text-2xl mb-5">❎ Cancel offer</h1>
-                    <p className="text-xl mb-5">
-                        Cancel a currently live offer and remove it from the
-                        Blockchain.
-                    </p>
-                    <button
-                        className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
-                        onClick={() => {
-                            alert("doin bits");
-                        }}
-                    >
-                        Cancel offer
-                    </button>
+                        <SwiperSlide className="mb-10">Slide 1</SwiperSlide>
+                        <SwiperSlide>Slide 2</SwiperSlide>
+                        <SwiperSlide>Slide 3</SwiperSlide>
+                    </Swiper>
+
+                    <div className="grid grid-cols-2 mt-5 gap-3">
+                        <button
+                            className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
+                            onClick={() => {
+                                alert("doin bits");
+                            }}
+                        >
+                            Update
+                        </button>
+                        <button
+                            className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
+                            onClick={() => {
+                                alert("doin bits");
+                            }}
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
