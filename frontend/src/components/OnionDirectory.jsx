@@ -37,13 +37,14 @@ export const OnionDirectory = () => {
                 <div className="text-left">
                     <table class="table-auto border-separate border-spacing-1 border border-purple-700 rounded onion-table table-striped-rows">
                         <caption class="caption-top text-sm">
-                            List of Onion addresses associated with Bazaar's.
+                            Onion directory lists all vendors with a .onion
+                            hidden service.
                         </caption>
                         <thead className="bg-purple-700">
                             <tr className="">
-                                <th className="p-2">Bazaar</th>
+                                <th className="p-2">Bazaar title</th>
                                 <th className="p-2">Description</th>
-                                <th className="p-2">Link</th>
+                                <th className="p-2">Hidden service URL</th>
                             </tr>
                         </thead>
                         {!loading && (
