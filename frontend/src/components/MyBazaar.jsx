@@ -5,6 +5,7 @@ import { VendorExistsCheck } from "../../wailsjs/go/main/App";
 
 import { CreateMyBazaar } from "./CreateMyBazaar";
 import { UpdateMyBazaar } from "./UpdateMyBazaar";
+import { AliasMismatch } from "./AliasMismatch";
 
 export const MyBazaar = () => {
     const { alias, daemonUrl, mode } = useContext(DefaultContext);
@@ -27,8 +28,7 @@ export const MyBazaar = () => {
         myBazaarMode = <CreateMyBazaar />;
     } else {
         //  alias mismatched or doesnt exists and no bazaar exists
-        alert("derp");
-        myBazaarMode = <CreateMyBazaar />;
+        myBazaarMode = <AliasMismatch />;
     }
 
     return <div className="flex flex-col">{myBazaarMode}</div>;
