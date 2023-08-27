@@ -4,7 +4,7 @@ import { DefaultContext } from "../contexts/MainContext";
 import { VendorExistsCheck } from "../../wailsjs/go/main/App";
 
 import { CreateMyBazaar } from "./CreateMyBazaar";
-import { UpdateMyBazaar } from "./UpdateMyBazaar";
+import { BazaarManagement } from "./BazaarManagement";
 import { AliasMismatch } from "./AliasMismatch";
 
 export const MyBazaar = () => {
@@ -22,7 +22,7 @@ export const MyBazaar = () => {
     // TODO - Fix flicker on screen on initial render
     if (bazaarExists && mode == "full") {
         // Welcome to your bazaar
-        myBazaarMode = <UpdateMyBazaar />;
+        myBazaarMode = <BazaarManagement />;
     } else if (!bazaarExists && mode == "full") {
         // bazaar doesnt exist, but alias exists and matches, create a bazaar
         myBazaarMode = <CreateMyBazaar />;

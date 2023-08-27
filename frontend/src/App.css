@@ -29,6 +29,11 @@
     padding: 0.3em;
 }
 
+.dash-card {
+    background-color: #22272e;
+    padding: 1em;
+}
+
 .table-striped-rows tr:nth-child(2n) td {
     background-color: #22272e;
 }

@@ -48,14 +48,17 @@ export const OnionDirectory = () => {
                                     // check if url contains .onion, if so, render
                                     if (offers[index].url.includes(".onion")) {
                                         return (
-                                            <tr key={index}>
+                                            <tr
+                                                className="border-2 border-b-purple-700"
+                                                key={index}
+                                            >
                                                 <td className="p-2">
                                                     {offers[index].t}
                                                 </td>
                                                 <td className="p-2">
                                                     {offers[index].com}
                                                 </td>
-                                                <td className="p-2">
+                                                <td className="p-2 break-all">
                                                     {offers[index].url}
                                                 </td>
                                             </tr>
