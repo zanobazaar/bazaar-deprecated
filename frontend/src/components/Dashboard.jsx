@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { DefaultContext } from "../contexts/MainContext";
 
-import { WalletDash } from "./WalletDash";
+import { MyBazaar } from "./MyBazaar";
 import { Connections } from "./Connections";
 
 export const Dashboard = () => {
-    const { walletConn, setWalletConn } = useContext(DefaultContext);
+    const { walletConn, mode } = useContext(DefaultContext);
 
     let dashboard;
     if (walletConn) {
-        dashboard = <WalletDash />;
+        dashboard = <MyBazaar />;
     } else {
         dashboard = <Connections />;
     }

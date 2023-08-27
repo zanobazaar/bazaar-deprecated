@@ -7,19 +7,9 @@ export const SidebarData = [
         link: "/",
     },
     {
-        title: "My Bazaar",
-        icon: "🛍️",
-        link: "/mybazaar",
-    },
-    {
         title: "View Bazaars",
         icon: "🛒",
         link: "/bazaars",
-    },
-    {
-        title: "Manage offers",
-        icon: "📝",
-        link: "/create",
     },
     {
         title: "See all offers",

@@ -112,7 +112,7 @@ func GetWalletInfo(walletUrl string) string {
 
 func CheckZanoServices(walletUrl string, daemonUrl string, alias string) (bool, bool) {
 
-	aliasTrim := strings.TrimSpace(alias)
+	aliasTrim := strings.TrimSpace(alias) // user enteres alias
 
 	var connected bool
 	var aliasMatches bool

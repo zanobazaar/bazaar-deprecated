@@ -15,10 +15,6 @@ export const Connections = () => {
         setMode,
     } = useContext(DefaultContext);
 
-    // const [newDaemonUrl, setNewDaemonUrl] = useState(daemonUrl);
-    // const [newWalletUrl, setNewWalletUrl] = useState(walletUrl);
-    // const [newAlias, setNewAlias] = useState("");
-
     const connect = () => {
         CheckConnection(walletUrl, daemonUrl, alias).then((result) => {
             if (!result.connected) {

@@ -9,6 +9,7 @@ export const ContextProvider = (props) => {
 
     const [balance, setBalance] = useState(null);
     const [alias, setAlias] = useState("");
+    const [aliasMatches, setAliasMatches] = useState(false);
     const [mode, setMode] = useState("");
 
     const [daemonUrl, setDaemonUrl] = useState(
@@ -28,6 +29,8 @@ export const ContextProvider = (props) => {
                 setBalance,
                 alias,
                 setAlias,
+                aliasMatches,
+                setAliasMatches,
                 daemonUrl,
                 setDaemonUrl,
                 walletUrl,

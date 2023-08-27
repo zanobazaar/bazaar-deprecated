@@ -11,8 +11,6 @@ export const OnionDirectory = () => {
     const [offers, setOffers] = useState({});
     const [loading, setLoading] = useState(true);
 
-    let onionString;
-
     useEffect(() => {
         FetchOffers(daemonUrl).then((result) => {
             setLoading(false);
@@ -25,20 +23,16 @@ export const OnionDirectory = () => {
     return (
         <div className="flex flex-col">
             <h2 className="text-3xl mb-20 text-purple-700">Onion directory</h2>
-            <div className="grid grid-rows-2 gap-4 text-white text-xl">
+            <div className="grid grid-rows-1 gap-4 text-white text-xl">
                 <div className="">
                     <img src={tor} width={100} alt="" />
                 </div>
-                <div className="">
-                    To list your onion service, create a Bazaar and enter your
-                    .onion url.
-                </div>
                 {/* table */}
                 <div className="text-left">
-                    <table class="table-auto border-separate border-spacing-1 border border-purple-700 rounded onion-table table-striped-rows">
-                        <caption class="caption-top text-sm">
-                            Onion directory lists all vendors with a .onion
-                            hidden service.
+                    <table className="table-auto border-separate border-spacing-1 border border-purple-700 rounded onion-table table-striped-rows">
+                        <caption className="caption-top text-sm text-green-400">
+                            Onion directory automatically lists all vendors with
+                            a .onion hidden service.
                         </caption>
                         <thead className="bg-purple-700">
                             <tr className="">

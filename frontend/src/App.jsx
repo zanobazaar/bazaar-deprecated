@@ -6,8 +6,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { Dashboard } from "./components/Dashboard";
 import { Bazaars } from "./components/Bazaars";
-import { MyBazaar } from "./components/MyBazaar";
-import { ManageOffers } from "./components/ManageOffers";
+// import { MyBazaar } from "./components/MyBazaar";
 import { CreateOffer } from "./components/CreateOffer";
 import { UpdateOffer } from "./components/UpdateOffer";
 import { CancelOffer } from "./components/CancelOffer";
@@ -28,8 +27,6 @@ const App = () => {
                     <Route element={<Layout />}>
                         <Route path="/" Component={Dashboard} />
                         <Route path="/bazaars" Component={Bazaars} />
-                        <Route path="/mybazaar" Component={MyBazaar} />
-                        <Route path="/create" Component={ManageOffers} />
                         <Route path="/offers" Component={SeeAllOffers} />
                         <Route path="/createoffer" Component={CreateOffer} />
                         <Route path="/updateoffer" Component={UpdateOffer} />

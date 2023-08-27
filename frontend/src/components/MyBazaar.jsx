@@ -7,7 +7,7 @@ import { CreateMyBazaar } from "./CreateMyBazaar";
 import { UpdateMyBazaar } from "./UpdateMyBazaar";
 
 export const MyBazaar = () => {
-    const { alias, daemonUrl } = useContext(DefaultContext);
+    const { alias, daemonUrl, mode } = useContext(DefaultContext);
 
     const [bazaarExists, setBazaarExists] = useState(false);
     let myBazaarMode;
@@ -15,17 +15,19 @@ export const MyBazaar = () => {
     useEffect(() => {
         VendorExistsCheck(alias, daemonUrl).then((result) => {
             setBazaarExists(result);
-            if (setBazaarExists) {
-                myBazaarMode = <UpdateMyBazaar />;
-            } else {
-                myBazaarMode = <CreateMyBazaar />;
-            }
         });
-    }, [bazaarExists, myBazaarMode]);
+    }, [myBazaarMode]);
 
-    if (bazaarExists) {
+    // TODO - Fix flicker on screen on initial render
+    if (bazaarExists && mode == "full") {
+        // Welcome to your bazaar
         myBazaarMode = <UpdateMyBazaar />;
+    } else if (!bazaarExists && mode == "full") {
+        // bazaar doesnt exist, but alias exists and matches, create a bazaar
+        myBazaarMode = <CreateMyBazaar />;
     } else {
+        //  alias mismatched or doesnt exists and no bazaar exists
+        alert("derp");
         myBazaarMode = <CreateMyBazaar />;
     }
 

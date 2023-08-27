@@ -8,7 +8,7 @@ export const ManageOffers = () => {
     return (
         <div className="flex flex-col">
             <div className="mt-20">
-                <h2 className="text-2xl text-purple-700">Manage offers</h2>
+                <h2 className="text-2xl text-purple-700">Template</h2>
             </div>
             {/* main container */}
             <div className="">
