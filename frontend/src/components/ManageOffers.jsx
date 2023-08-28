@@ -17,10 +17,27 @@ import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
 export const ManageOffers = () => {
-    const {} = useContext(DefaultContext);
+    const { alias } = useContext(DefaultContext);
 
+    const [postSuccess, setPostSuccess] = useState("");
+
+    const [vendorTxId, setVendorTxId] = useState("");
+    const [title, setTitle] = useState("");
+    const [amount, setAmount] = useState("");
+    const [itemAmount, setItemAmount] = useState("");
+    const [category, setCategory] = useState("");
+    const [contactDetails, setContactDetails] = useState("");
+    const [comments, setComments] = useState(""); // title
+    const [conditions, setConditions] = useState(`offer:${alias}`);
+    const [expire, setExpire] = useState("");
+    const [locationCity, setLocationCity] = useState("");
+    const [locationCountry, setLocationCountry] = useState("");
+    const [offerType, setOfferType] = useState(3);
+    const [paymentType, setPaymentType] = useState("");
+    const [url, setUrl] = useState("");
+
+    // preview modal controls
     const [open, setOpen] = useState(false);
-
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
 
@@ -44,30 +61,70 @@ export const ManageOffers = () => {
                         <div className="grid grid-cols-2 gap-2 overflow-auto text-black create">
                             <div className="mb-1">
                                 <span className="text-sm">Title</span>
-                                <input className="p-0.5 w-full" type="text" />
+                                <input
+                                    className="p-0.5 w-full"
+                                    type="text"
+                                    placeholder=""
+                                    onChange={(event) => {
+                                        setTitle(event.target.value);
+                                    }}
+                                />
                             </div>
                             <div className="mb-1">
                                 <span className="text-sm">Description</span>
-                                <input className="p-0.5 w-full" type="text" />
+                                <input
+                                    className="p-0.5 w-full"
+                                    type="text"
+                                    placeholder=""
+                                    onChange={(event) => {
+                                        setComments(event.target.value);
+                                    }}
+                                />
                             </div>
                             <div className="mb-1">
                                 <span className="text-sm">Image URL</span>
-                                <input className="p-0.5 w-full" type="text" />
+                                <input
+                                    className="p-0.5 w-full"
+                                    type="text"
+                                    placeholder=""
+                                    onChange={(event) => {
+                                        setCategory(event.target.value);
+                                    }}
+                                />
                             </div>
                             <div className="mb-1">
                                 <span className="text-sm">
                                     Accepted payments
                                 </span>
-                                <input className="p-0.5 w-full" type="text" />
+                                <input
+                                    className="p-0.5 w-full"
+                                    type="text"
+                                    placeholder=""
+                                    onChange={(event) => {
+                                        setPaymentType(event.target.value);
+                                    }}
+                                />
                             </div>
                             <div className="mb-1">
-                                <span className="text-sm">Ships to</span>
-                                <input className="p-0.5 w-full" type="text" />
+                                <span className="text-sm">Shipping info</span>
+                                <input
+                                    className="p-0.5 w-full"
+                                    type="text"
+                                    placeholder=""
+                                />
                             </div>
                             <div className="mb-1">
                                 <span className="text-sm">Amount</span>
-                                <input className="p-0.5 w-full" type="text" />
+                                <input
+                                    className="p-0.5 w-full"
+                                    type="text"
+                                    placeholder=""
+                                    onChange={(event) => {
+                                        setAmount(event.target.value);
+                                    }}
+                                />
                             </div>
+                            <p>{postSuccess}</p>
                         </div>
                     </div>
 
@@ -131,26 +188,24 @@ export const ManageOffers = () => {
                         <SwiperSlide className="mb-14 grid grid-rows-3 rounded-lg p-3 border-2 border-purple-700">
                             <div className="grid grid-cols-2 mb-2 justify-left items-center align-middle text-center">
                                 <img
-                                    src="https://assets.survivornet.com/wp-content/uploads/2019/05/30184931/psychedelic-mushrooms.jpg"
+                                    src="https://c2.staticflickr.com/8/7152/6834291327_df7eb6b39f_b.jpg"
                                     alt=""
-                                    width={250}
+                                    height={250}
                                     className="rounded-lg"
                                 />
                                 <h3 className="text-3xl text-purple-400">
-                                    1oz of Golden Caps
+                                    Black Hat Services
                                 </h3>
                             </div>
                             <div className="mb-4">
                                 <p className="text-md">
-                                    Lorem ipsum dolor sit, amet consectetur
-                                    adipisicing elit. Repellat, ipsum corrupti!
-                                    Sed temporibus, fugit non adipisci soluta
-                                    exercitationem impedit dolor!
+                                    I'm a Hacker, I will create custom tools for
+                                    you to the get the done.
                                 </p>
                             </div>
                             <div className="">
                                 <p className="text-sm text-purple-400">
-                                    TxHash: khgjhgsdfjg4y5gj4hg5j45hgj4g5
+                                    TxHash: jhv54jyg5u3k4y6fvhg65vmj3b54
                                 </p>
                             </div>
                             <div className="grid grid-cols-2 mt-5 gap-3">
@@ -175,26 +230,24 @@ export const ManageOffers = () => {
                         <SwiperSlide className="mb-14 grid grid-rows-3 rounded-lg p-3 border-2 border-purple-700">
                             <div className="grid grid-cols-2 mb-2 justify-left items-center align-middle text-center">
                                 <img
-                                    src="https://assets.survivornet.com/wp-content/uploads/2019/05/30184931/psychedelic-mushrooms.jpg"
+                                    src="https://pixelz.cc/wp-content/uploads/2018/07/cup-of-coffee-and-roasted-beans-on-wood-table-uhd-4k-wallpaper.jpg"
                                     alt=""
                                     width={250}
                                     className="rounded-lg"
                                 />
                                 <h3 className="text-3xl text-purple-400">
-                                    1oz of Golden Caps
+                                    Finest blend coffee
                                 </h3>
                             </div>
                             <div className="mb-4">
                                 <p className="text-md">
-                                    Lorem ipsum dolor sit, amet consectetur
-                                    adipisicing elit. Repellat, ipsum corrupti!
-                                    Sed temporibus, fugit non adipisci soluta
-                                    exercitationem impedit dolor!
+                                    Need a pick me up? get the finest coffee
+                                    blends known to man today.
                                 </p>
                             </div>
                             <div className="">
                                 <p className="text-sm text-purple-400">
-                                    TxHash: khgjhgsdfjg4y5gj4hg5j45hgj4g5
+                                    TxHash: kj3b56j3h65gvk3jbkl3h
                                 </p>
                             </div>
                             <div className="grid grid-cols-2 mt-5 gap-3">
@@ -219,21 +272,19 @@ export const ManageOffers = () => {
                         <SwiperSlide className="mb-14 grid grid-rows-3 rounded-lg p-3 border-2 border-purple-700">
                             <div className="grid grid-cols-2 mb-2 justify-left items-center align-middle text-center">
                                 <img
-                                    src="https://assets.survivornet.com/wp-content/uploads/2019/05/30184931/psychedelic-mushrooms.jpg"
+                                    src="https://convertful.com/wp-content/uploads/2019/05/Ebook-Templates-Teaser.jpg"
                                     alt=""
                                     width={250}
                                     className="rounded-lg"
                                 />
                                 <h3 className="text-3xl text-purple-400">
-                                    1oz of Golden Caps
+                                    Forbidden Ebook collection
                                 </h3>
                             </div>
                             <div className="mb-4">
                                 <p className="text-md">
-                                    Lorem ipsum dolor sit, amet consectetur
-                                    adipisicing elit. Repellat, ipsum corrupti!
-                                    Sed temporibus, fugit non adipisci soluta
-                                    exercitationem impedit dolor!
+                                    The best collection of forbidden books,
+                                    including the anarchist cookbook
                                 </p>
                             </div>
                             <div className="">
