@@ -16,6 +16,8 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
+import create from "../assets/images/create.png";
+
 export const ManageOffers = () => {
     const { alias } = useContext(DefaultContext);
 
@@ -51,12 +53,12 @@ export const ManageOffers = () => {
             <div className="grid grid-cols-2 gap-10 ">
                 <div className="dash-card rounded-lg shadow-lg">
                     <div className="grid mb-3">
-                        <div className="grid">
-                            <h1 className="text-2xl mb-5">✅ Create offer</h1>
-                            <p className="text-xl mb-5 create">
-                                Create and post a new offer to the Zano
-                                Blockchain now.
-                            </p>
+                        <div className="grid mb-4">
+                            <img
+                                className="rounded-lg border-2 border-purple-700 shadow-lg"
+                                src={create}
+                                alt=""
+                            />
                         </div>
                         <div className="grid grid-cols-2 gap-2 overflow-auto text-black create">
                             <div className="mb-1">
