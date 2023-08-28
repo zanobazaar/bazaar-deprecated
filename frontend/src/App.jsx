@@ -7,9 +7,6 @@ import { Layout } from "./components/Layout/Layout";
 import { Dashboard } from "./components/Dashboard";
 import { Bazaars } from "./components/Bazaars";
 // import { MyBazaar } from "./components/MyBazaar";
-import { CreateOffer } from "./components/CreateOffer";
-import { UpdateOffer } from "./components/UpdateOffer";
-import { CancelOffer } from "./components/CancelOffer";
 import { SeeAllOffers } from "./components/SeeAllOffers";
 import { OnionDirectory } from "./components/OnionDirectory";
 import { AliasMarket } from "./components/AliasMarket";
@@ -28,9 +25,6 @@ const App = () => {
                         <Route path="/" Component={Dashboard} />
                         <Route path="/bazaars" Component={Bazaars} />
                         <Route path="/offers" Component={SeeAllOffers} />
-                        <Route path="/createoffer" Component={CreateOffer} />
-                        <Route path="/updateoffer" Component={UpdateOffer} />
-                        <Route path="/canceloffer" Component={CancelOffer} />
                         <Route
                             path="/oniondirectory"
                             Component={OnionDirectory}
