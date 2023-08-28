@@ -49,3 +49,14 @@
     width: 100%;
     background-color: #1c2128;
 }
+
+.create span {
+    color: white;
+}
+
+.create input {
+    background-color: #1c2128;
+    border-radius: 0.3em;
+    border: 2px solid #7e4798;
+    color: white;
+}
