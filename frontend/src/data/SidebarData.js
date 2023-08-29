@@ -12,11 +12,6 @@ export const SidebarData = [
         link: "/bazaars",
     },
     {
-        title: "See all offers",
-        icon: "👀",
-        link: "/offers",
-    },
-    {
         title: "Onion directory",
         icon: "🧅",
         link: "/oniondirectory",
@@ -30,11 +25,6 @@ export const SidebarData = [
         title: "Live chat",
         icon: "💬",
         link: "/chat",
-    },
-    {
-        title: "Settings",
-        icon: "⚙️",
-        link: "/settings",
     },
     {
         title: "Donate",
@@ -53,11 +43,6 @@ export const PartialSidebarData = [
         title: "View Bazaars",
         icon: "🛒",
         link: "/bazaars",
-    },
-    {
-        title: "See all offers",
-        icon: "👀",
-        link: "/offers",
     },
     {
         title: "Onion directory",

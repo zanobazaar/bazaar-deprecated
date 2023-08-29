@@ -124,7 +124,7 @@ export const ManageOffers = () => {
                 <div className="dash-card rounded-lg shadow-lg">
                     <h1 className="text-2xl mb-5">✅ Create new offer</h1>
                     <p className="text-xl mb-5"></p>
-                    <div className="grid mb-3">
+                    <div className="grid mb-5">
                         <div className="grid mb-4">
                             <img
                                 className="rounded-lg border-2 border-purple-700 shadow-lg"
@@ -138,9 +138,9 @@ export const ManageOffers = () => {
                                 <input
                                     className="p-0.5 w-full"
                                     type="text"
-                                    placeholder=""
+                                    placeholder="Coffee Beans"
                                     onChange={(event) => {
-                                        setTitle(event.target.value);
+                                        setTitle(event.target.value.trim());
                                     }}
                                 />
                             </div>
@@ -149,9 +149,9 @@ export const ManageOffers = () => {
                                 <input
                                     className="p-0.5 w-full"
                                     type="text"
-                                    placeholder=""
+                                    placeholder="The finest beans..."
                                     onChange={(event) => {
-                                        setComments(event.target.value);
+                                        setComments(event.target.value.trim());
                                     }}
                                 />
                             </div>
@@ -160,9 +160,9 @@ export const ManageOffers = () => {
                                 <input
                                     className="p-0.5 w-full"
                                     type="text"
-                                    placeholder=""
+                                    placeholder="https://..."
                                     onChange={(event) => {
-                                        setCategory(event.target.value);
+                                        setCategory(event.target.value.trim());
                                     }}
                                 />
                             </div>
@@ -173,9 +173,11 @@ export const ManageOffers = () => {
                                 <input
                                     className="p-0.5 w-full"
                                     type="text"
-                                    placeholder=""
+                                    placeholder="$ZANO"
                                     onChange={(event) => {
-                                        setPaymentType(event.target.value);
+                                        setPaymentType(
+                                            event.target.value.trim()
+                                        );
                                     }}
                                 />
                             </div>
@@ -184,9 +186,11 @@ export const ManageOffers = () => {
                                 <input
                                     className="p-0.5 w-full"
                                     type="text"
-                                    placeholder=""
+                                    placeholder="Worldwide"
                                     onChange={(event) => {
-                                        setLocationCity(event.target.value);
+                                        setLocationCity(
+                                            event.target.value.trim()
+                                        );
                                     }}
                                 />
                             </div>
@@ -195,7 +199,7 @@ export const ManageOffers = () => {
                                 <input
                                     className="p-0.5 w-full"
                                     type="text"
-                                    placeholder=""
+                                    placeholder="100"
                                     onChange={(event) => {
                                         setAmount(event.target.value);
                                     }}
@@ -225,15 +229,7 @@ export const ManageOffers = () => {
                     </div>
 
                     {/*  */}
-                    <div className="grid grid-cols-2 gap-4">
-                        {createButton}
-                        <button
-                            className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
-                            onClick={onOpenModal}
-                        >
-                            Preview
-                        </button>
-                    </div>
+                    <div className="grid grid-cols-1 gap-4">{createButton}</div>
                     <Modal
                         open={open}
                         onClose={onCloseModal}
@@ -344,10 +340,8 @@ export const ManageOffers = () => {
                                                     Update
                                                 </button>
                                                 <button
-                                                    className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
-                                                    onClick={() => {
-                                                        alert("doin bits");
-                                                    }}
+                                                    className="rounded disabled:bg-slate-700 mb-3 active:bg-purple-500 text-white p-2"
+                                                    disabled
                                                 >
                                                     Cancel
                                                 </button>
