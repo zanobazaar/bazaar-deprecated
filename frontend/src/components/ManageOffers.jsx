@@ -213,7 +213,7 @@ export const ManageOffers = () => {
                                     type="text"
                                     placeholder="100"
                                     onChange={(event) => {
-                                        setAmount(event.target.value);
+                                        setAmount(event.target.value.trim());
                                     }}
                                 />
                             </div>
@@ -254,7 +254,7 @@ export const ManageOffers = () => {
                     >
                         <div>
                             <h1 className="text-2xl text-white mb-5">
-                                ✅ Update existing offer
+                                📝 Update existing offer
                             </h1>
                             <p className="text-xl mb-5"></p>
                             <div className="grid mb-5">
@@ -503,6 +503,10 @@ export const ManageOffers = () => {
                                                         );
                                                         setUpdatePaymentType(
                                                             offers[index].pt
+                                                        );
+                                                        setTxIdToUpdate(
+                                                            offers[index]
+                                                                .tx_hash
                                                         );
                                                         onOpenModal();
                                                     }}
