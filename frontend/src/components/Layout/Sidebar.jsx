@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { SidebarData, PartialSidebarData } from "../../data/SidebarData";
 
 import Logo from "../../assets/images/bazaar.svg";
+import Zano from "../../assets/images/zano.svg";
 
 export const Sidebar = () => {
     // context data
@@ -29,6 +30,9 @@ export const Sidebar = () => {
                     );
                 })}
             </ul>
+            <div className="grid grid-rows-1 justify-center absolute inset-x-0 bottom-0 mb-10">
+                <img src={Zano} width={40} alt="" srcset="" />
+            </div>
         </div>
     );
 };
