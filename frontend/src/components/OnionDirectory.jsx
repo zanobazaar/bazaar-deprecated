@@ -13,8 +13,8 @@ export const OnionDirectory = () => {
 
     useEffect(() => {
         FetchOffers(daemonUrl).then((result) => {
-            setLoading(false);
             setOffers(result.result.offers);
+            setLoading(false);
         });
     }, []);
 
