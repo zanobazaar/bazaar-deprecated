@@ -23,7 +23,9 @@ export const WalletData = () => {
                             in $RACKZ
                         </span>
                     </h1>
-                    <h2 className="text-3xl text-purple-400">👀</h2>
+                    <h2 className="text-3xl text-purple-400">
+                        👀 <span className="text-sm text-slate-300">soon</span>
+                    </h2>
                 </div>
                 <div className="dash-card rounded-lg shadow-lg">
                     <h1 className="text-xl mb-1">Alias</h1>
