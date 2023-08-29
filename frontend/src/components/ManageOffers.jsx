@@ -381,7 +381,7 @@ export const ManageOffers = () => {
                                         <select
                                             name="expire"
                                             id="expire"
-                                            value={expire}
+                                            value={setUpdateExpire}
                                             onChange={(event) => {
                                                 setUpdateExpire(
                                                     event.target.value
