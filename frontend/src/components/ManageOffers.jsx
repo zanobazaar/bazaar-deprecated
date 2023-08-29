@@ -37,7 +37,7 @@ export const ManageOffers = () => {
     const [contactDetails, setContactDetails] = useState("");
     const [comments, setComments] = useState("");
     const [conditions, setConditions] = useState(`offer:${alias}`);
-    const [expire, setExpire] = useState("");
+    const [expire, setExpire] = useState("5");
     const [locationCity, setLocationCity] = useState("");
     const [locationCountry, setLocationCountry] = useState("");
     const [offerType, setOfferType] = useState(3);
@@ -53,7 +53,7 @@ export const ManageOffers = () => {
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
 
-    let [offerImage, setOfferImage] = useState();
+    const [createEnable, setCreateEnable] = useState(false);
 
     const pushOffer = () => {
         PostOffer(
@@ -63,6 +63,7 @@ export const ManageOffers = () => {
             category,
             comments,
             conditions,
+            parseInt(expire),
             locationCity,
             paymentType
         ).then((result) => {
@@ -80,6 +81,38 @@ export const ManageOffers = () => {
         });
     }, []);
 
+    let createButton;
+
+    if (
+        title.length != 0 &&
+        amount.length != 0 &&
+        category.length != 0 &&
+        comments.length != 0 &&
+        conditions.length != 0 &&
+        locationCity.length != 0 &&
+        paymentType.length != 0
+    ) {
+        createButton = (
+            <button
+                className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
+                onClick={() => {
+                    pushOffer();
+                }}
+            >
+                Create
+            </button>
+        );
+    } else {
+        createButton = (
+            <button
+                className="rounded disabled:bg-slate-700 mb-3 active:bg-purple-500 text-white p-2"
+                disabled
+            >
+                Create
+            </button>
+        );
+    }
+
     return (
         <div className="flex flex-col">
             {/* main container */}
@@ -89,7 +122,7 @@ export const ManageOffers = () => {
 
             <div className="grid grid-cols-2 gap-10 ">
                 <div className="dash-card rounded-lg shadow-lg">
-                    <h1 className="text-2xl mb-5">✅ Create</h1>
+                    <h1 className="text-2xl mb-5">✅ Create new offer</h1>
                     <p className="text-xl mb-5"></p>
                     <div className="grid mb-3">
                         <div className="grid mb-4">
@@ -168,20 +201,32 @@ export const ManageOffers = () => {
                                     }}
                                 />
                             </div>
+                            <div className="grid grid-rows-1">
+                                <span className="text-sm create">
+                                    Days to expiry
+                                </span>
+                                <select
+                                    name="expire"
+                                    id="expire"
+                                    value={expire}
+                                    onChange={(event) => {
+                                        setExpire(event.target.value);
+                                    }}
+                                >
+                                    <option value="1">1</option>
+                                    <option value="3">3</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="30">30</option>
+                                </select>
+                            </div>
                             <p>{txid}</p>
                         </div>
                     </div>
 
                     {/*  */}
                     <div className="grid grid-cols-2 gap-4">
-                        <button
-                            className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
-                            onClick={() => {
-                                pushOffer();
-                            }}
-                        >
-                            Create
-                        </button>
+                        {createButton}
                         <button
                             className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
                             onClick={onOpenModal}
@@ -210,11 +255,7 @@ export const ManageOffers = () => {
                 </div>
                 {!loading && (
                     <div className="dash-card rounded-lg shadow-lg">
-                        <h1 className="text-2xl mb-5">📝 Offers</h1>
-                        <p className="text-xl mb-5">
-                            To update or cancel a live offer, navigate to the
-                            relevant offer and hit update or cancel when active.
-                        </p>
+                        <h1 className="text-2xl mb-5">📝 Existing offers</h1>
 
                         <Swiper
                             spaceBetween={30}
@@ -238,32 +279,60 @@ export const ManageOffers = () => {
                                     offers[index].cnt.includes(`offer:${alias}`)
                                 ) {
                                     return (
-                                        <SwiperSlide className="mb-14 grid grid-rows-3 rounded-lg p-3 border-2 border-purple-700">
-                                            <div className="grid grid-cols-2 mb-2 justify-left items-center align-middle text-center">
-                                                {offers[index].cat == "" && (
-                                                    <img
-                                                        src={noimage}
-                                                        alt=""
-                                                        height={250}
-                                                        className="rounded-lg"
-                                                    />
-                                                )}
-                                                {offers[index].cat != "" && (
-                                                    <img
-                                                        src={offers[index].cat}
-                                                        alt=""
-                                                        height={250}
-                                                        className="rounded-lg"
-                                                    />
-                                                )}
-                                                <h3 className="text-3xl text-purple-400">
-                                                    {offers[index].t}
-                                                </h3>
+                                        <SwiperSlide className="mb-10 grid grid-rows-3 rounded-lg p-3 border-2 border-purple-700 shadow-lg">
+                                            <div className="grid grid-rows-1 mb-3 justify-left align-middle text-left">
+                                                {/* image */}
+                                                <div className="mb-3">
+                                                    {offers[index].cat ==
+                                                        "" && (
+                                                        <img
+                                                            src={noimage}
+                                                            alt=""
+                                                            height={250}
+                                                            className="rounded-lg"
+                                                        />
+                                                    )}
+                                                    {offers[index].cat !=
+                                                        "" && (
+                                                        <img
+                                                            src={
+                                                                offers[index]
+                                                                    .cat
+                                                            }
+                                                            alt=""
+                                                            height={250}
+                                                            className="rounded-lg"
+                                                        />
+                                                    )}
+                                                </div>
+                                                {/* title */}
+                                                <div>
+                                                    <h3 className="text-3xl text-purple-400">
+                                                        {offers[index].t}
+                                                    </h3>
+                                                </div>
                                             </div>
                                             <div className="mb-4">
                                                 <p className="text-md">
                                                     {offers[index].com}
                                                 </p>
+                                            </div>
+                                            <div className="mb-4">
+                                                <p className="text-md">
+                                                    Accepting:{" "}
+                                                    {offers[index].pt}
+                                                </p>
+                                            </div>
+                                            <div className="mb-4">
+                                                <p className="text-md">
+                                                    Ships to:{" "}
+                                                    {offers[index].lci}
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-2xl text-purple-400">
+                                                    Price: {offers[index].ap}
+                                                </h3>
                                             </div>
                                             <div className="grid grid-cols-2 mt-5 gap-3">
                                                 <button

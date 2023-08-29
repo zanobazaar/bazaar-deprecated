@@ -44,8 +44,8 @@ func (a *App) VendorExistsCheck(alias string, daemonUrl string) bool {
 	return vendorExists
 }
 
-func (a *App) PostOffer(walletUrl string, title string, amount string, category string, comments string, conditions string, locationCity string, paymentType string) string {
-	offerTxid := market.CreateOffer(walletUrl, title, amount, category, comments, conditions, locationCity, paymentType)
+func (a *App) PostOffer(walletUrl string, title string, amount string, category string, comments string, conditions string, expire int, locationCity string, paymentType string) string {
+	offerTxid := market.CreateOffer(walletUrl, title, amount, category, comments, conditions, expire, locationCity, paymentType)
 	return offerTxid
 }
 

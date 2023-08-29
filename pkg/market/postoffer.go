@@ -17,7 +17,7 @@ type TxOffer struct {
 	} `json:"result"`
 }
 
-func CreateOfferTx(walletUrl string, title string, amount string, category string, comments string, conditions string, locationCity string, paymentType string) string {
+func CreateOfferTx(walletUrl string, title string, amount string, category string, comments string, conditions string, expire int, locationCity string, paymentType string) string {
 	jsonBody := fmt.Sprintf(`{
 	"jsonrpc": "2.0",
 	"id": "0",
@@ -31,7 +31,7 @@ func CreateOfferTx(walletUrl string, title string, amount string, category strin
 			"cnt": "%s",
 			"com": "%s",
 			"do": "",
-			"et": 1,
+			"et": %d,
 			"fee": 10000000000,
 			"lci": "%s",
 			"lco": "",
@@ -41,7 +41,7 @@ func CreateOfferTx(walletUrl string, title string, amount string, category strin
 			"url": ""
 		}
 	}
-}`, amount, category, conditions, comments, locationCity, paymentType, title)
+}`, amount, category, conditions, comments, expire, locationCity, paymentType, title)
 
 	request, err := http.NewRequest("POST", walletUrl, bytes.NewBuffer([]byte(jsonBody)))
 	if err != nil {
@@ -69,8 +69,8 @@ func CreateOfferTx(walletUrl string, title string, amount string, category strin
 	return data.Result.TxHash
 }
 
-func CreateOffer(walletUrl string, title string, amount string, category string, comments string, conditions string, locationCity string, paymentType string) string {
+func CreateOffer(walletUrl string, title string, amount string, category string, comments string, conditions string, expire int, locationCity string, paymentType string) string {
 
-	txId := CreateOfferTx(walletUrl, title, amount, category, comments, conditions, locationCity, paymentType)
+	txId := CreateOfferTx(walletUrl, title, amount, category, comments, conditions, expire, locationCity, paymentType)
 	return txId
 }
