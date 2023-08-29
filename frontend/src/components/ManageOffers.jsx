@@ -204,7 +204,7 @@ export const ManageOffers = () => {
                 </div>
                 {!loading && (
                     <div className="dash-card rounded-lg shadow-lg">
-                        <h1 className="text-2xl mb-5">📝 Offers carousel</h1>
+                        <h1 className="text-2xl mb-5">📝 Offers</h1>
                         <p className="text-xl mb-5">
                             To update or cancel a live offer, navigate to the
                             relevant offer and hit update or cancel when active.
@@ -234,26 +234,18 @@ export const ManageOffers = () => {
                                         <SwiperSlide className="mb-14 grid grid-rows-3 rounded-lg p-3 border-2 border-purple-700">
                                             <div className="grid grid-cols-2 mb-2 justify-left items-center align-middle text-center">
                                                 <img
-                                                    src="https://c2.staticflickr.com/8/7152/6834291327_df7eb6b39f_b.jpg"
+                                                    src={offers[index].cat}
                                                     alt=""
                                                     height={250}
                                                     className="rounded-lg"
                                                 />
                                                 <h3 className="text-3xl text-purple-400">
-                                                    Black Hat Services
+                                                    {offers[index].t}
                                                 </h3>
                                             </div>
                                             <div className="mb-4">
                                                 <p className="text-md">
-                                                    I'm a Hacker, I will create
-                                                    custom tools for you to the
-                                                    get the done.
-                                                </p>
-                                            </div>
-                                            <div className="">
-                                                <p className="text-sm text-purple-400">
-                                                    TxHash:
-                                                    jhv54jyg5u3k4y6fvhg65vmj3b54
+                                                    {offers[index].com}
                                                 </p>
                                             </div>
                                             <div className="grid grid-cols-2 mt-5 gap-3">
