@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { DefaultContext } from "../contexts/MainContext";
 
 // import go function
-import { FetchOffers, PostOffer } from "../../wailsjs/go/main/App";
+import { FetchOffers, PostOffer, UpdateOffer } from "../../wailsjs/go/main/App";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -54,7 +54,9 @@ export const ManageOffers = () => {
     const [updateExpire, setUpdateExpire] = useState("5");
     const [updateLocationCity, setUpdateLocationCity] = useState("");
     const [updatePaymentType, setUpdatePaymentType] = useState("");
+
     const [txIdToUpdate, setTxIdToUpdate] = useState("");
+    const [updatedTx, setUpdatedTx] = useState("");
 
     //
     const [offers, setOffers] = useState({});
@@ -80,9 +82,29 @@ export const ManageOffers = () => {
             paymentType
         ).then((result) => {
             if (result != "") {
-                setTxId(result);
+                setTxId("offer created");
             }
-            setTxId(result);
+            // handle error
+        });
+    };
+
+    const updateOffer = () => {
+        UpdateOffer(
+            txIdToUpdate,
+            walletUrl,
+            updateTitle,
+            updateAmount,
+            updateCategory,
+            updateComments,
+            updateConditions,
+            parseInt(updateExpire),
+            updateLocationCity,
+            updatePaymentType
+        ).then((result) => {
+            if (result != "") {
+                setUpdatedTx("offer updated!");
+            }
+            // handle error
         });
     };
 
@@ -236,7 +258,7 @@ export const ManageOffers = () => {
                                     <option value="30">30</option>
                                 </select>
                             </div>
-                            <p>{txid}</p>
+                            <p className="text-white">{txid}</p>
                         </div>
                     </div>
 
@@ -271,9 +293,9 @@ export const ManageOffers = () => {
                                         <input
                                             className="p-0.5 w-full"
                                             type="text"
-                                            placeholder={updateTitle}
+                                            value={updateTitle}
                                             onChange={(event) => {
-                                                setTitle(
+                                                setUpdateTitle(
                                                     event.target.value.trim()
                                                 );
                                             }}
@@ -286,9 +308,9 @@ export const ManageOffers = () => {
                                         <input
                                             className="p-0.5 w-full"
                                             type="text"
-                                            placeholder={updateComments}
+                                            value={updateComments}
                                             onChange={(event) => {
-                                                setComments(
+                                                setUpdateComments(
                                                     event.target.value.trim()
                                                 );
                                             }}
@@ -301,9 +323,9 @@ export const ManageOffers = () => {
                                         <input
                                             className="p-0.5 w-full"
                                             type="text"
-                                            placeholder={updateCategory}
+                                            value={updateCategory}
                                             onChange={(event) => {
-                                                setCategory(
+                                                setUpdateCategory(
                                                     event.target.value.trim()
                                                 );
                                             }}
@@ -316,9 +338,9 @@ export const ManageOffers = () => {
                                         <input
                                             className="p-0.5 w-full"
                                             type="text"
-                                            placeholder={updatePaymentType}
+                                            value={updatePaymentType}
                                             onChange={(event) => {
-                                                setPaymentType(
+                                                setUpdatePaymentType(
                                                     event.target.value.trim()
                                                 );
                                             }}
@@ -331,9 +353,9 @@ export const ManageOffers = () => {
                                         <input
                                             className="p-0.5 w-full"
                                             type="text"
-                                            placeholder={updateLocationCity}
+                                            value={updateLocationCity}
                                             onChange={(event) => {
-                                                setLocationCity(
+                                                setUpdateLocationCity(
                                                     event.target.value.trim()
                                                 );
                                             }}
@@ -344,9 +366,11 @@ export const ManageOffers = () => {
                                         <input
                                             className="p-0.5 w-full"
                                             type="text"
-                                            placeholder={updateAmount}
+                                            value={updateAmount}
                                             onChange={(event) => {
-                                                setAmount(event.target.value);
+                                                setUpdateAmount(
+                                                    event.target.value
+                                                );
                                             }}
                                         />
                                     </div>
@@ -371,7 +395,6 @@ export const ManageOffers = () => {
                                             <option value="30">30</option>
                                         </select>
                                     </div>
-                                    <p>{txid}</p>
                                 </div>
                             </div>
 
@@ -380,7 +403,7 @@ export const ManageOffers = () => {
                                 <button
                                     className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
                                     onClick={() => {
-                                        onOpenModal();
+                                        updateOffer();
                                     }}
                                 >
                                     Update
@@ -393,6 +416,7 @@ export const ManageOffers = () => {
                                 >
                                     Exit
                                 </button>
+                                <p className="text-white">{updatedTx}</p>
                             </div>
                         </div>
                     </Modal>

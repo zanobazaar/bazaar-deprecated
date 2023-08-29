@@ -22,6 +22,10 @@ export function SendDonation(arg1, arg2, arg3) {
   return window['go']['main']['App']['SendDonation'](arg1, arg2, arg3);
 }
 
+export function UpdateOffer(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) {
+  return window['go']['main']['App']['UpdateOffer'](arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+}
+
 export function VendorExistsCheck(arg1, arg2) {
   return window['go']['main']['App']['VendorExistsCheck'](arg1, arg2);
 }

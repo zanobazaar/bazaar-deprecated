@@ -4,6 +4,7 @@ import (
 	"changeme/pkg/market"
 	"changeme/pkg/wallet"
 	"context"
+	"fmt"
 	"strconv"
 )
 
@@ -42,6 +43,12 @@ func (a *App) FetchOffers(daemonUrl string) market.Offers {
 func (a *App) VendorExistsCheck(alias string, daemonUrl string) bool {
 	vendorExists := market.VendorCheck(alias, daemonUrl)
 	return vendorExists
+}
+
+func (a *App) UpdateOffer(txIdToUpdate string, walletUrl string, title string, amount string, category string, comments string, conditions string, expire int, locationCity string, paymentType string) string {
+	offerTxid := market.OfferUpdate(txIdToUpdate, walletUrl, title, amount, category, comments, conditions, expire, locationCity, paymentType)
+	fmt.Println("I am here!")
+	return offerTxid
 }
 
 func (a *App) PostOffer(walletUrl string, title string, amount string, category string, comments string, conditions string, expire int, locationCity string, paymentType string) string {

@@ -13,4 +13,6 @@ export function PostOffer(arg1:string,arg2:string,arg3:string,arg4:string,arg5:s
 
 export function SendDonation(arg1:string,arg2:string,arg3:string):Promise<string>;
 
+export function UpdateOffer(arg1:string,arg2:string,arg3:string,arg4:string,arg5:string,arg6:string,arg7:string,arg8:number,arg9:string,arg10:string):Promise<string>;
+
 export function VendorExistsCheck(arg1:string,arg2:string):Promise<boolean>;
