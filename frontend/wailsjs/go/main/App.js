@@ -14,6 +14,10 @@ export function FetchOffers(arg1) {
   return window['go']['main']['App']['FetchOffers'](arg1);
 }
 
+export function PostOffer(arg1, arg2, arg3, arg4, arg5, arg6, arg7) {
+  return window['go']['main']['App']['PostOffer'](arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+}
+
 export function SendDonation(arg1, arg2, arg3) {
   return window['go']['main']['App']['SendDonation'](arg1, arg2, arg3);
 }

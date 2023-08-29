@@ -8,20 +8,29 @@ export const WalletData = () => {
     return (
         <div className="flex flex-col">
             {/* main container */}
-            <div className="grid grid-cols-3 gap-10 mt-20">
+            <div className="grid grid-cols-4 gap-10 mt-20">
                 <div className="dash-card rounded-lg shadow-lg">
-                    <h1 className="text-2xl mb-1">
+                    <h1 className="text-xl mb-1">
                         Balance{" "}
                         <span className="text-sm text-slate-300">in $ZANO</span>
                     </h1>
                     <h2 className="text-3xl text-purple-400">100</h2>
                 </div>
                 <div className="dash-card rounded-lg shadow-lg">
-                    <h1 className="text-2xl mb-1">Alias</h1>
+                    <h1 className="text-xl mb-1">
+                        Balance{" "}
+                        <span className="text-sm text-slate-300">
+                            in $RACKZ
+                        </span>
+                    </h1>
+                    <h2 className="text-3xl text-purple-400">👀</h2>
+                </div>
+                <div className="dash-card rounded-lg shadow-lg">
+                    <h1 className="text-xl mb-1">Alias</h1>
                     <h2 className="text-3xl text-purple-400">@bazaar</h2>
                 </div>
                 <div className="dash-card rounded-lg shadow-lg">
-                    <h1 className="text-2xl mb-1">Total offers</h1>
+                    <h1 className="text-xl mb-1">Total offers</h1>
                     <h2 className="text-3xl text-purple-400">12</h2>
                 </div>
             </div>

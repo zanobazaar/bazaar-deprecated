@@ -26,6 +26,7 @@ func OfferTx(walletUrl string, title string, comments string, conditions string,
 		"od": {
 			"ap": "",
 			"at": "",
+			"b": "",
 			"cat": "%s",
 			"cnt": "%s",
 			"com": "%s",

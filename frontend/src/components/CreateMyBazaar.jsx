@@ -10,6 +10,7 @@ export const CreateMyBazaar = () => {
     const [vendorTxId, setVendorTxId] = useState("");
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
+    const [bonus, setBonus] = useState("")
     const [itemAmount, setItemAmount] = useState("");
     const [category, setCategory] = useState("");
     const [contactDetails, setContactDetails] = useState("");

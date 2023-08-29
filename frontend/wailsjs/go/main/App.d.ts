@@ -9,6 +9,8 @@ export function CreateBazaar(arg1:string,arg2:string,arg3:string,arg4:string,arg
 
 export function FetchOffers(arg1:string):Promise<market.Offers>;
 
+export function PostOffer(arg1:string,arg2:string,arg3:string,arg4:string,arg5:string,arg6:string,arg7:string):Promise<string>;
+
 export function SendDonation(arg1:string,arg2:string,arg3:string):Promise<string>;
 
 export function VendorExistsCheck(arg1:string,arg2:string):Promise<boolean>;

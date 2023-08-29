@@ -2,6 +2,9 @@ import React, { useState, useContext } from "react";
 
 import { DefaultContext } from "../contexts/MainContext";
 
+// import go function
+import { CreateBazaar, PostOffer } from "../../wailsjs/go/main/App";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -19,17 +22,19 @@ import { Modal } from "react-responsive-modal";
 import create from "../assets/images/create.png";
 
 export const ManageOffers = () => {
-    const { alias } = useContext(DefaultContext);
+    const { alias, walletUrl } = useContext(DefaultContext);
 
     const [postSuccess, setPostSuccess] = useState("");
+    const [txid, setTxId] = useState("");
 
     const [vendorTxId, setVendorTxId] = useState("");
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
+    const [bonus, setBonus] = useState("");
     const [itemAmount, setItemAmount] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState(""); // product image
     const [contactDetails, setContactDetails] = useState("");
-    const [comments, setComments] = useState(""); // title
+    const [comments, setComments] = useState("");
     const [conditions, setConditions] = useState(`offer:${alias}`);
     const [expire, setExpire] = useState("");
     const [locationCity, setLocationCity] = useState("");
@@ -42,6 +47,20 @@ export const ManageOffers = () => {
     const [open, setOpen] = useState(false);
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
+
+    const pushOffer = () => {
+        PostOffer(
+            walletUrl,
+            title,
+            amount,
+            category,
+            comments,
+            locationCity,
+            paymentType
+        ).then((result) => {
+            setTxId(result);
+        });
+    };
 
     return (
         <div className="flex flex-col">
@@ -113,6 +132,9 @@ export const ManageOffers = () => {
                                     className="p-0.5 w-full"
                                     type="text"
                                     placeholder=""
+                                    onChange={(event) => {
+                                        setLocationCity(event.target.value);
+                                    }}
                                 />
                             </div>
                             <div className="mb-1">
@@ -126,7 +148,7 @@ export const ManageOffers = () => {
                                     }}
                                 />
                             </div>
-                            <p>{postSuccess}</p>
+                            <p>{txid}</p>
                         </div>
                     </div>
 
@@ -135,7 +157,7 @@ export const ManageOffers = () => {
                         <button
                             className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
                             onClick={() => {
-                                alert("doin bits");
+                                pushOffer();
                             }}
                         >
                             Create
