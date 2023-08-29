@@ -20,6 +20,7 @@ import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
 import create from "../assets/images/create.png";
+import noimage from "../assets/images/image_unavailable.png";
 
 export const ManageOffers = () => {
     const { alias, walletUrl, daemonUrl } = useContext(DefaultContext);
@@ -52,6 +53,8 @@ export const ManageOffers = () => {
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
 
+    let [offerImage, setOfferImage] = useState();
+
     const pushOffer = () => {
         PostOffer(
             walletUrl,
@@ -63,6 +66,9 @@ export const ManageOffers = () => {
             locationCity,
             paymentType
         ).then((result) => {
+            if (result != "") {
+                setTxId(result);
+            }
             setTxId(result);
         });
     };
@@ -74,8 +80,6 @@ export const ManageOffers = () => {
         });
     }, []);
 
-    console.log(offers);
-
     return (
         <div className="flex flex-col">
             {/* main container */}
@@ -85,6 +89,8 @@ export const ManageOffers = () => {
 
             <div className="grid grid-cols-2 gap-10 ">
                 <div className="dash-card rounded-lg shadow-lg">
+                    <h1 className="text-2xl mb-5">✅ Create</h1>
+                    <p className="text-xl mb-5"></p>
                     <div className="grid mb-3">
                         <div className="grid mb-4">
                             <img
@@ -227,18 +233,29 @@ export const ManageOffers = () => {
                         >
                             {Object.keys(offers).map((key, index) => {
                                 // check if url contains .onion, if so, render
+
                                 if (
                                     offers[index].cnt.includes(`offer:${alias}`)
                                 ) {
                                     return (
                                         <SwiperSlide className="mb-14 grid grid-rows-3 rounded-lg p-3 border-2 border-purple-700">
                                             <div className="grid grid-cols-2 mb-2 justify-left items-center align-middle text-center">
-                                                <img
-                                                    src={offers[index].cat}
-                                                    alt=""
-                                                    height={250}
-                                                    className="rounded-lg"
-                                                />
+                                                {offers[index].cat == "" && (
+                                                    <img
+                                                        src={noimage}
+                                                        alt=""
+                                                        height={250}
+                                                        className="rounded-lg"
+                                                    />
+                                                )}
+                                                {offers[index].cat != "" && (
+                                                    <img
+                                                        src={offers[index].cat}
+                                                        alt=""
+                                                        height={250}
+                                                        className="rounded-lg"
+                                                    />
+                                                )}
                                                 <h3 className="text-3xl text-purple-400">
                                                     {offers[index].t}
                                                 </h3>

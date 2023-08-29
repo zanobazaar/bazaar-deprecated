@@ -75,11 +75,6 @@ export const PartialSidebarData = [
         link: "/chat",
     },
     {
-        title: "Settings",
-        icon: "⚙️",
-        link: "/settings",
-    },
-    {
         title: "Donate",
         icon: "💙",
         link: "/donate",
