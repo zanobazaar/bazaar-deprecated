@@ -9,7 +9,7 @@ import { Bazaars } from "./components/Bazaars";
 // import { MyBazaar } from "./components/MyBazaar";
 import { SeeAllOffers } from "./components/SeeAllOffers";
 import { OnionDirectory } from "./components/OnionDirectory";
-import { AliasMarket } from "./components/AliasMarket";
+import { ListAlias } from "./components/ListAlias";
 import { LiveChat } from "./components/LiveChat";
 import { Donate } from "./components/Donate";
 import { Settings } from "./components/Settings";
@@ -29,7 +29,7 @@ const App = () => {
                             path="/oniondirectory"
                             Component={OnionDirectory}
                         />
-                        <Route path="/aliasmarket" Component={AliasMarket} />
+                        <Route path="/aliasmarket" Component={ListAlias} />
                         <Route path="/chat" Component={LiveChat} />
                         <Route path="/donate" Component={Donate} />
                         <Route path="/settings" Component={Settings} />

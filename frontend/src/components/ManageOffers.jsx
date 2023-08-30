@@ -65,7 +65,11 @@ export const ManageOffers = () => {
     // preview modal controls
     const [open, setOpen] = useState(false);
     const onOpenModal = () => setOpen(true);
-    const onCloseModal = () => setOpen(false);
+    const onCloseModal = () => {
+        setUpdatedTx("");
+        setTxId("");
+        setOpen(false);
+    };
 
     let createButton;
 
@@ -92,16 +96,16 @@ export const ManageOffers = () => {
 
     const updateOffer = () => {
         UpdateOffer(
-            txIdToUpdate,
-            walletUrl,
-            updateTitle,
-            updateAmount,
-            updateCategory,
-            updateComments,
-            updateConditions,
+            txIdToUpdate.trim(),
+            walletUrl.trim(),
+            updateTitle.trim(),
+            updateAmount.trim(),
+            updateCategory.trim(),
+            updateComments.trim(),
+            updateConditions.trim(),
             parseInt(updateExpire),
-            updateLocationCity,
-            updatePaymentType
+            updateLocationCity.trim(),
+            updatePaymentType.trim()
         ).then((result) => {
             if (result != "") {
                 setUpdatedTx("offer updated!");
@@ -298,7 +302,7 @@ export const ManageOffers = () => {
                                             value={updateTitle}
                                             onChange={(event) => {
                                                 setUpdateTitle(
-                                                    event.target.value.trim()
+                                                    event.target.value
                                                 );
                                             }}
                                         />
@@ -313,7 +317,7 @@ export const ManageOffers = () => {
                                             value={updateComments}
                                             onChange={(event) => {
                                                 setUpdateComments(
-                                                    event.target.value.trim()
+                                                    event.target.value
                                                 );
                                             }}
                                         />
@@ -328,7 +332,7 @@ export const ManageOffers = () => {
                                             value={updateCategory}
                                             onChange={(event) => {
                                                 setUpdateCategory(
-                                                    event.target.value.trim()
+                                                    event.target.value
                                                 );
                                             }}
                                         />
@@ -343,7 +347,7 @@ export const ManageOffers = () => {
                                             value={updatePaymentType}
                                             onChange={(event) => {
                                                 setUpdatePaymentType(
-                                                    event.target.value.trim()
+                                                    event.target.value
                                                 );
                                             }}
                                         />
@@ -358,7 +362,7 @@ export const ManageOffers = () => {
                                             value={updateLocationCity}
                                             onChange={(event) => {
                                                 setUpdateLocationCity(
-                                                    event.target.value.trim()
+                                                    event.target.value
                                                 );
                                             }}
                                         />
@@ -378,7 +382,7 @@ export const ManageOffers = () => {
                                     </div>
                                     <div className="grid grid-rows-1">
                                         <span className="text-sm create">
-                                            Days to expiry
+                                            Days till expiry
                                         </span>
                                         <select
                                             name="expire"

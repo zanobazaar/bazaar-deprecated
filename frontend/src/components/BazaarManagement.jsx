@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ManageOffers } from "./ManageOffers";
-import { ListAlias } from "./ListAlias";
+import { AliasMarket } from "./AliasMarket";
 import { WalletData } from "./WalletData";
 
 export const BazaarManagement = () => {
@@ -10,6 +10,7 @@ export const BazaarManagement = () => {
             <div className="flex flex-col text-white text-xl">
                 <h2 className="text-3xl text-purple-700">Dashboard</h2>
                 <WalletData />
+                <AliasMarket />
                 <ManageOffers />
                 {/* <ListAlias /> */}
             </div>
