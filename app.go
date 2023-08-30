@@ -39,11 +39,22 @@ func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) 
 	return Addresses{Connected: connected, AliasMatches: aliasMatches}
 }
 
-func (a *App) HowManyOffers(daemonUrl string) int {
-	numberOfOffers := market.GetAllOffers(daemonUrl)
-	fmt.Println(numberOfOffers)
+func (a *App) HowManyOffers(daemonUrl string, alias string) int {
 
-	return 5
+	numberOfOffers := 0
+
+	offerALiasStr := fmt.Sprintf("offer:%s", alias)
+	offers := market.GetAllOffers(daemonUrl)
+
+	for _, offer := range offers.Result.Offers {
+		if offer.Cnt == offerALiasStr {
+			numberOfOffers++
+		}
+	}
+
+	fmt.Println(offerALiasStr)
+
+	return numberOfOffers
 }
 
 func (a *App) GetBalance(walletUrl string) Balance {

@@ -18,8 +18,8 @@ export function GetBalance(arg1) {
   return window['go']['main']['App']['GetBalance'](arg1);
 }
 
-export function HowManyOffers(arg1) {
-  return window['go']['main']['App']['HowManyOffers'](arg1);
+export function HowManyOffers(arg1, arg2) {
+  return window['go']['main']['App']['HowManyOffers'](arg1, arg2);
 }
 
 export function PostOffer(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) {

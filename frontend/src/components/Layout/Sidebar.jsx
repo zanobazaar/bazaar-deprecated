@@ -31,7 +31,12 @@ export const Sidebar = () => {
                 })}
             </ul>
             <div className="grid grid-rows-1 justify-center absolute inset-x-0 bottom-0 mb-10">
-                <img src={Zano} width={30} alt="" srcset="" />
+                <div className="grid justify-center text-center align-middle items-center mb-3">
+                    <img src={Zano} width={35} alt="" srcset="" />
+                </div>
+                <div className="text-white">
+                    <p className="text-md">Powered by Zano</p>
+                </div>
             </div>
         </div>
     );

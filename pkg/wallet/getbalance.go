@@ -47,8 +47,6 @@ func BalanceFetch(walletUrl string) (uint64, uint64) {
 
 	_ = json.Unmarshal([]byte(body), &data)
 
-	fmt.Println(data.Result.Balance)
-
 	return data.Result.Balance, data.Result.UnlockedBalance
 }
 
