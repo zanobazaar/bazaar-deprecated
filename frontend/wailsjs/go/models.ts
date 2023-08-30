@@ -14,6 +14,20 @@ export namespace main {
 	        this.alias = source["alias"];
 	    }
 	}
+	export class Balance {
+	    balance: number;
+	    unlocked_balance: number;
+	
+	    static createFrom(source: any = {}) {
+	        return new Balance(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.balance = source["balance"];
+	        this.unlocked_balance = source["unlocked_balance"];
+	    }
+	}
 
 }
 

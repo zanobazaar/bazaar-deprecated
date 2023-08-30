@@ -31,7 +31,7 @@ export const Sidebar = () => {
                 })}
             </ul>
             <div className="grid grid-rows-1 justify-center absolute inset-x-0 bottom-0 mb-10">
-                <img src={Zano} width={40} alt="" srcset="" />
+                <img src={Zano} width={30} alt="" srcset="" />
             </div>
         </div>
     );

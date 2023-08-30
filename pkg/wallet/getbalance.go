@@ -8,35 +8,21 @@ import (
 	"net/http"
 )
 
-type Tx struct {
-	Id      string `json:"id"`
+type BalanceTx struct {
+	Id      int    `json:"id"`
 	Jsonrpc string `json:"jsonrpc"`
 	Result  struct {
-		TxHash        string `json:"tx_hash"`
-		TxUnsignedHex string `json:"tx_unsigned_hex"`
+		Balance         uint64 `json:"balance"`
+		UnlockedBalance uint64 `json:"unlocked_balance"`
 	} `json:"result"`
 }
 
-func DonationTx(zanoAmount uint64, donateAddress string, walletUrl string) string {
-	jsonBody := fmt.Sprintf(`{
+func BalanceFetch(walletUrl string) (uint64, uint64) {
+	jsonBody := fmt.Sprintln(`{
 	"jsonrpc": "2.0",
 	"id": 0,
-	"method": "transfer",
-	"params": {
-		"destinations": [
-      {
-        "address": "%s",
-        "amount": %v,
-        "asset_id": ""
-      }
-    ],
-		"fee": 10000000000,
-		"mixin": 10,
-		"payment_id": "",
-		"comment": ""
-	}
-}
-`, donateAddress, zanoAmount)
+	"method": "getbalance"
+}`)
 
 	request, err := http.NewRequest("POST", walletUrl, bytes.NewBuffer([]byte(jsonBody)))
 	if err != nil {
@@ -57,17 +43,17 @@ func DonationTx(zanoAmount uint64, donateAddress string, walletUrl string) strin
 	}(res.Body)
 
 	body, _ := io.ReadAll(res.Body)
-	data := Tx{}
+	data := BalanceTx{}
 
 	_ = json.Unmarshal([]byte(body), &data)
 
-	return data.Result.TxHash
+	fmt.Println(data.Result.Balance)
+
+	return data.Result.Balance, data.Result.UnlockedBalance
 }
 
-func SendDonation(amount uint64, donateAddress string, walletUrl string) string {
+func FetchBalance(walletUrl string) (uint64, uint64) {
 
-	zanoAmount := amount + 000000000000 // TODO - fix this so it sends correct amount
-
-	txid := DonationTx(zanoAmount, donateAddress, walletUrl)
-	return txid
+	balance, unlockedBalance := BalanceFetch(walletUrl)
+	return balance, unlockedBalance
 }

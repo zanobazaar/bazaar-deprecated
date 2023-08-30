@@ -4,6 +4,7 @@ import (
 	"changeme/pkg/market"
 	"changeme/pkg/wallet"
 	"context"
+	"fmt"
 	"strconv"
 )
 
@@ -40,8 +41,9 @@ func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) 
 
 func (a *App) HowManyOffers(daemonUrl string) int {
 	numberOfOffers := market.GetAllOffers(daemonUrl)
+	fmt.Println(numberOfOffers)
 
-	return numberOfOffers
+	return 5
 }
 
 func (a *App) GetBalance(walletUrl string) Balance {

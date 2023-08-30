@@ -51,7 +51,7 @@ export const ManageOffers = () => {
     const [updateCategory, setUpdateCategory] = useState(""); // product image
     const [updateComments, setUpdateComments] = useState("");
     const [updateConditions, setUpdateConditions] = useState(`offer:${alias}`);
-    const [updateExpire, setUpdateExpire] = useState("5");
+    const [updateExpire, setUpdateExpire] = useState("3");
     const [updateLocationCity, setUpdateLocationCity] = useState("");
     const [updatePaymentType, setUpdatePaymentType] = useState("");
 
@@ -87,6 +87,8 @@ export const ManageOffers = () => {
             // handle error
         });
     };
+
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
     const updateOffer = () => {
         UpdateOffer(
@@ -381,7 +383,7 @@ export const ManageOffers = () => {
                                         <select
                                             name="expire"
                                             id="expire"
-                                            value={setUpdateExpire}
+                                            value={updateExpire}
                                             onChange={(event) => {
                                                 setUpdateExpire(
                                                     event.target.value
