@@ -41,6 +41,13 @@
     background-color: #7e4798;
 }
 
+.table-striped-rows-alias tr:nth-child(2n) td {
+    background-color: #22272e;
+}
+.table-striped-row-aliass thead {
+    background-color: #38bdf8;
+}
+
 .customOverlay {
     background: rgba(24, 21, 28, 0.7);
 }

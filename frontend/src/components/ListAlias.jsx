@@ -22,23 +22,22 @@ export const ListAlias = () => {
 
     return (
         <div className="flex flex-col">
-            <h2 className="text-3xl mb-20 text-purple-700">Onion directory</h2>
+            <h2 className="text-3xl mb-20 text-purple-700">
+                Alias marketplace
+            </h2>
             <div className="grid grid-rows-1 gap-4 text-white text-xl">
-                <div className="">
-                    <img src={tor} width={100} alt="" />
-                </div>
                 {/* table */}
                 <div className="text-left">
-                    <table className="table-auto border-separate border-spacing-1 border border-purple-700 rounded onion-table table-striped-rows">
-                        <caption className="caption-top text-sm text-green-400">
-                            Onion directory automatically lists all vendors with
-                            a .onion hidden service.
+                    <table className="table-auto border-separate border-spacing-1 border border-sky-700 rounded onion-table table-striped-rows-alias">
+                        <caption className="caption-top text-sm text-sky-400">
+                            List of aliases listed for sale by sellers.
                         </caption>
-                        <thead className="bg-purple-700">
+                        <thead className="bg-sky-700">
                             <tr className="">
                                 <th className="p-2">Alias</th>
                                 <th className="p-2">Description</th>
-                                <th className="p-2">Get in touch</th>
+                                <th className="p-2">Contact</th>
+                                <th className="p-2">Accepting</th>
                             </tr>
                         </thead>
                         {!loading && (
@@ -46,10 +45,10 @@ export const ListAlias = () => {
                                 {/* 👇️ iterate object KEYS */}
                                 {Object.keys(offers).map((key, index) => {
                                     // check if url contains .onion, if so, render
-                                    if (offers[index].url.includes(".onion")) {
+                                    if (offers[index].cnt.includes("alias:")) {
                                         return (
                                             <tr
-                                                className="border-2 border-b-purple-700"
+                                                className="border-2 border-b-sky-700"
                                                 key={index}
                                             >
                                                 <td className="p-2">
@@ -64,7 +63,12 @@ export const ListAlias = () => {
                                                 </td>
                                                 <td className="p-2 break-all">
                                                     <p className="text-md">
-                                                        {offers[index].url}
+                                                        {offers[index].cnt}
+                                                    </p>
+                                                </td>
+                                                <td className="p-2 break-all">
+                                                    <p className="text-md">
+                                                        {offers[index].pt}
                                                     </p>
                                                 </td>
                                             </tr>

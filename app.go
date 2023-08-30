@@ -58,7 +58,12 @@ func (a *App) HowManyOffers(daemonUrl string, alias string) int {
 }
 
 func (a *App) GetBalance(walletUrl string) Balance {
+
 	balance, unlockedBalance := wallet.FetchBalance(walletUrl)
+
+	// str := strconv.FormatUint(balance, 10)
+	// trimBalanceStr := str[:len(str)-9]
+
 	return Balance{Balance: balance, UnlockedBalance: unlockedBalance}
 }
 

@@ -4,6 +4,8 @@ import { DefaultContext } from "../contexts/MainContext";
 
 import { GetBalance, HowManyOffers } from "../../wailsjs/go/main/App";
 
+import Big from "big.js";
+
 export const WalletData = () => {
     const { walletUrl, daemonUrl, alias } = useContext(DefaultContext);
 
@@ -11,9 +13,13 @@ export const WalletData = () => {
     const [unlockedBalance, setUnlockedBalance] = useState(0);
     const [numberOfOffers, setNumberOfOffers] = useState(0);
 
+    const multiplier = new Big((1e12).toString());
+
     const getBalance = () => {
         GetBalance(walletUrl).then((result) => {
-            setBalance(result.balance);
+            const bigAmount = new Big(result.balance);
+            const fixedAmount = bigAmount.div(multiplier).toString();
+            setBalance(fixedAmount.slice(0, -9));
             setUnlockedBalance(result.unlockedBalance);
         });
     };
