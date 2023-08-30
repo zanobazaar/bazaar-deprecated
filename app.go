@@ -4,7 +4,6 @@ import (
 	"changeme/pkg/market"
 	"changeme/pkg/wallet"
 	"context"
-	"fmt"
 	"strconv"
 )
 
@@ -28,13 +27,29 @@ type Addresses struct {
 	AliasMatches bool `json:"alias"`
 }
 
+type Balance struct {
+	Balance         uint64 `json:"balance"`
+	UnlockedBalance uint64 `json:"unlocked_balance"`
+}
+
 // CheckConnection returns a greeting for the given name
 func (a *App) CheckConnection(walletUrl string, daemonUrl string, alias string) Addresses {
 	connected, aliasMatches := wallet.CheckZanoServices(walletUrl, daemonUrl, alias)
 	return Addresses{Connected: connected, AliasMatches: aliasMatches}
 }
 
-// TODO - fix strange loop
+func (a *App) HowManyOffers(daemonUrl string) int {
+	numberOfOffers := market.GetAllOffers(daemonUrl)
+
+	return numberOfOffers
+}
+
+func (a *App) GetBalance(walletUrl string) Balance {
+	balance, unlockedBalance := wallet.FetchBalance(walletUrl)
+	return Balance{Balance: balance, UnlockedBalance: unlockedBalance}
+}
+
+// FetchOffers TODO - fix strange loop
 func (a *App) FetchOffers(daemonUrl string) market.Offers {
 	offers := market.GetAllOffers(daemonUrl)
 	return offers
@@ -47,7 +62,6 @@ func (a *App) VendorExistsCheck(alias string, daemonUrl string) bool {
 
 func (a *App) UpdateOffer(txIdToUpdate string, walletUrl string, title string, amount string, category string, comments string, conditions string, expire int, locationCity string, paymentType string) string {
 	offerTxid := market.OfferUpdate(txIdToUpdate, walletUrl, title, amount, category, comments, conditions, expire, locationCity, paymentType)
-	fmt.Println("I am here!")
 	return offerTxid
 }
 
