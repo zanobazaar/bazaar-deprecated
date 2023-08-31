@@ -7,7 +7,8 @@ import { GetBalance, HowManyOffers } from "../../wailsjs/go/main/App";
 import Big from "big.js";
 
 export const WalletData = () => {
-    const { walletUrl, daemonUrl, alias } = useContext(DefaultContext);
+    const { walletUrl, daemonUrl, alias, aliasForSale, setAliasForSale } =
+        useContext(DefaultContext);
 
     const [balance, setBalance] = useState(0);
     const [unlockedBalance, setUnlockedBalance] = useState(0);
@@ -19,7 +20,7 @@ export const WalletData = () => {
         GetBalance(walletUrl).then((result) => {
             const bigAmount = new Big(result.balance);
             const fixedAmount = bigAmount.div(multiplier).toString();
-            setBalance(fixedAmount.slice(0, -9));
+            setBalance(parseFloat(fixedAmount.slice(0, -9)));
             setUnlockedBalance(result.unlockedBalance);
         });
     };
@@ -60,7 +61,14 @@ export const WalletData = () => {
                 <div className="grid dash-card rounded-lg shadow-lg break-words justify-center align-middle items-center text-center">
                     <div>
                         <h1 className="text-xl mb-1">Alias</h1>
-                        <h2 className="text-2xl text-purple-400">@{alias}</h2>
+                        <h2 className="text-2xl text-purple-400 mb-1">
+                            @{alias}
+                        </h2>
+                        {aliasForSale && (
+                            <span className="text-sky-400 text-md ">
+                                alias is up for sale!
+                            </span>
+                        )}
                     </div>
                 </div>
                 <div className="grid dash-card rounded-lg shadow-lg break-all justify-center align-middle items-center text-center">

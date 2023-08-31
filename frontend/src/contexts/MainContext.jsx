@@ -11,6 +11,7 @@ export const ContextProvider = (props) => {
     const [alias, setAlias] = useState("");
     const [aliasMatches, setAliasMatches] = useState(false);
     const [mode, setMode] = useState("");
+    const [aliasForSale, setAliasForSale] = useState(true);
 
     const [daemonUrl, setDaemonUrl] = useState(
         "http://127.0.0.1:11211/json_rpc"
@@ -39,6 +40,8 @@ export const ContextProvider = (props) => {
                 setWalletConn,
                 mode,
                 setMode,
+                aliasForSale,
+                setAliasForSale,
             }}
         >
             {props.children}
