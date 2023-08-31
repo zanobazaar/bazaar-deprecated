@@ -8,8 +8,15 @@ import { FetchOffers } from "../../wailsjs/go/main/App";
 import wenImage from "../assets/images/wen_image.png";
 
 export const ViewBazaars = () => {
-    const { daemonUrl, activeVendor, setActiveVendor } =
-        useContext(DefaultContext);
+    const {
+        daemonUrl,
+        activeVendor,
+        setActiveVendor,
+        setActiveVendorTitle,
+        setActiveVendorComments,
+        setActiveVendorContact,
+        setActiveVendorCategory,
+    } = useContext(DefaultContext);
 
     const [offers, setOffers] = useState({});
     const [loading, setLoading] = useState(true);
@@ -47,6 +54,18 @@ export const ViewBazaars = () => {
                                         className=""
                                         onClick={() => {
                                             setActiveVendor(offers[index].cnt);
+                                            setActiveVendorTitle(
+                                                offers[index].t
+                                            );
+                                            setActiveVendorComments(
+                                                offers[index].com
+                                            );
+                                            setActiveVendorContact(
+                                                offers[index].cnt
+                                            );
+                                            setActiveVendorCategory(
+                                                offers[index].cat
+                                            );
                                         }}
                                     >
                                         <Link to="/vendoroffers">

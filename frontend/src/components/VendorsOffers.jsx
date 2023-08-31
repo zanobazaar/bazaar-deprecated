@@ -8,7 +8,14 @@ import { FetchOffers } from "../../wailsjs/go/main/App";
 import wenImage from "../assets/images/wen_image.png";
 
 export const VendorOffers = () => {
-    const { daemonUrl, activeVendor } = useContext(DefaultContext);
+    const {
+        daemonUrl,
+        activeVendor,
+        activeVendorTitle,
+        activeVendorComments,
+        activeVendorContact,
+        activeVendorCategory,
+    } = useContext(DefaultContext);
 
     const [offers, setOffers] = useState({});
     const [loading, setLoading] = useState(true);
@@ -22,9 +29,26 @@ export const VendorOffers = () => {
 
     return (
         <div className="flex flex-col">
-            <h2 className="text-3xl mb-20 text-purple-700">
-                {activeVendor.slice(7) + "'s Bazaar"}
-            </h2>
+            {/* bazaar header */}
+            <div className="grid grid-cols-3 border=2 border-purple-700 gap-5 mb-5 dash-card justify-center align-middle items-center">
+                <div className="">
+                    <img
+                        className="rounded-lg"
+                        src={activeVendorCategory}
+                        alt=""
+                    />
+                </div>
+                <div>
+                    <h3 className="text-4xl mb-3 text-purple-400">
+                        {activeVendorTitle}
+                    </h3>
+                    <p className="text-xl text-white">{activeVendorComments}</p>
+                </div>
+                <div>
+                    <p>{}</p>
+                </div>
+            </div>
+            {/*  */}
             {loading && (
                 <div>
                     <h1>Loading Bazaars..</h1>
