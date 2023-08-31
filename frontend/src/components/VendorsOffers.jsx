@@ -23,6 +23,7 @@ export const VendorOffers = () => {
     useEffect(() => {
         FetchOffers(daemonUrl).then((result) => {
             setOffers(result.result.offers);
+
             setLoading(false);
         });
     }, []);
@@ -30,24 +31,29 @@ export const VendorOffers = () => {
     return (
         <div className="flex flex-col">
             {/* bazaar header */}
-            <div className="grid grid-cols-3 border=2 border-purple-700 gap-5 mb-5 dash-card justify-center align-middle items-center">
+            <div className="grid grid-cols-2 border-solid border-2 rounded-lg border-purple-500 gap-5 mb-5 dash-card justify-center text-center align-middle items-center">
                 <div className="">
                     <img
+                        height={300}
                         className="rounded-lg"
                         src={activeVendorCategory}
                         alt=""
                     />
                 </div>
-                <div>
+                <div className="break-words">
                     <h3 className="text-4xl mb-3 text-purple-400">
                         {activeVendorTitle}
                     </h3>
-                    <p className="text-xl text-white">{activeVendorComments}</p>
-                </div>
-                <div>
-                    <p>{}</p>
+                    <p className="text-2xl mb-3 text-white">
+                        {activeVendorComments}
+                    </p>
+                    <p className="text-xl mb-3 text-white">
+                        Contact: {activeVendorContact}
+                    </p>
                 </div>
             </div>
+            <hr />
+            <br />
             {/*  */}
             {loading && (
                 <div>
@@ -71,63 +77,68 @@ export const VendorOffers = () => {
                                 return (
                                     // vendor card
                                     <button className="">
-                                        <Link to="">
-                                            <div className="grid grid-rows-1 hover:bg-slate-800 bg:shadow-xxl active:bg-slate-700 dash-card p-10 shadow-lg rounded-lg mb-5 justify-center text-left items-center align-middle">
-                                                <div className="mb-3">
-                                                    {offers[index].cat.trim() ==
-                                                        "" && (
-                                                        <img
-                                                            className="rounded-lg"
-                                                            src={wenImage}
-                                                            alt=""
-                                                        />
-                                                    )}
-                                                    {offers[index].cat.trim() !=
-                                                        "" && (
-                                                        <img
-                                                            className="rounded-lg"
-                                                            src={
-                                                                offers[index]
-                                                                    .cat
-                                                            }
-                                                            alt=""
-                                                        />
-                                                    )}
-                                                </div>
-                                                <div>
-                                                    <h1 className="text-3xl mb-3 text-purple-400">
-                                                        {offers[index].t}
-                                                    </h1>
-                                                </div>
-                                                <div className="mb-3">
-                                                    <p>{offers[index].com}</p>
-                                                </div>
-                                                <div className="mb-3">
-                                                    <p>
-                                                        Shipping to:{" "}
-                                                        {offers[index].lco}
-                                                    </p>
-                                                </div>
-                                                <div className="mb-3">
-                                                    <p>
-                                                        Location:{" "}
-                                                        {offers[index].lci}
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p>
-                                                        Accepting:{" "}
-                                                        {offers[index].pt}
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p>
-                                                        Accepting:{" "}
-                                                        {offers[index].ap}
-                                                    </p>
-                                                </div>
+                                        <div className="grid grid-rows-1 hover:bg-slate-800 bg:shadow-xxl dash-card p-10 shadow-lg rounded-lg mb-5 justify-center text-left items-center align-middle">
+                                            <div className="mb-3">
+                                                {offers[index].cat.trim() ==
+                                                    "" && (
+                                                    <img
+                                                        className="rounded-lg"
+                                                        src={wenImage}
+                                                        alt=""
+                                                    />
+                                                )}
+                                                {offers[index].cat.trim() !=
+                                                    "" && (
+                                                    <img
+                                                        className="rounded-lg"
+                                                        src={offers[index].cat}
+                                                        alt=""
+                                                    />
+                                                )}
                                             </div>
-                                        </Link>
+                                            <div>
+                                                <h1 className="text-3xl mb-3 text-purple-400">
+                                                    {offers[index].t}
+                                                </h1>
+                                            </div>
+                                            <div className="mb-3 text-xl">
+                                                <p className="">
+                                                    {offers[index].com}
+                                                </p>
+                                            </div>
+
+                                            <div className="mb-3">
+                                                <p>
+                                                    Shipping to:{" "}
+                                                    {offers[index].lci}
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p className="mb-3">
+                                                    Accepting:{" "}
+                                                    {offers[index].pt}
+                                                </p>
+                                            </div>
+                                            <div className="mb-3">
+                                                <p className="text-3xl text-purple-600">
+                                                    Price: {offers[index].ap}
+                                                </p>
+                                            </div>
+                                            <div className="">
+                                                {/* <Link
+                                                    className="grid w-full"
+                                                    to={}
+                                                > */}
+                                                <button
+                                                    className="rounded disabled:bg-slate-700 mb-3 active:bg-purple-500 text-white p-2"
+                                                    disabled
+                                                    onClick={() => {}}
+                                                >
+                                                    Buy Now
+                                                </button>
+                                                {/* </Link> */}
+                                            </div>
+                                        </div>
                                     </button>
                                 );
                             }

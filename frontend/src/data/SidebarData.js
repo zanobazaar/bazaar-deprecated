@@ -26,11 +26,6 @@ export const SidebarData = [
         icon: "💬",
         link: "/chat",
     },
-    {
-        title: "Donate",
-        icon: "💙",
-        link: "/donate",
-    },
 ];
 
 export const PartialSidebarData = [
@@ -58,11 +53,6 @@ export const PartialSidebarData = [
         title: "Live chat",
         icon: "💬",
         link: "/chat",
-    },
-    {
-        title: "Donate",
-        icon: "💙",
-        link: "/donate",
     },
 ];
 

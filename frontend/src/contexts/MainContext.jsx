@@ -17,6 +17,7 @@ export const ContextProvider = (props) => {
     const [activeVendorComments, setActiveVendorComments] = useState("");
     const [activeVendorContact, setActiveVendorContact] = useState("");
     const [activeVendorCategory, setActiveVendorCategory] = useState("");
+    const [vendorTxId, setVendorTxId] = useState("");
 
     const [daemonUrl, setDaemonUrl] = useState(
         "http://127.0.0.1:11211/json_rpc"
@@ -57,6 +58,7 @@ export const ContextProvider = (props) => {
                 setActiveVendorContact,
                 activeVendorCategory,
                 setActiveVendorCategory,
+                vendorTxId,
             }}
         >
             {props.children}

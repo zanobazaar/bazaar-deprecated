@@ -61,7 +61,7 @@ export const ViewBazaars = () => {
                                                 offers[index].com
                                             );
                                             setActiveVendorContact(
-                                                offers[index].cnt
+                                                offers[index].url
                                             );
                                             setActiveVendorCategory(
                                                 offers[index].cat
