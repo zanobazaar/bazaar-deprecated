@@ -11,7 +11,7 @@ export const ContextProvider = (props) => {
     const [alias, setAlias] = useState("");
     const [aliasMatches, setAliasMatches] = useState(false);
     const [mode, setMode] = useState("");
-    const [aliasForSale, setAliasForSale] = useState(true);
+    const [aliasForSale, setAliasForSale] = useState(false);
 
     const [daemonUrl, setDaemonUrl] = useState(
         "http://127.0.0.1:11211/json_rpc"

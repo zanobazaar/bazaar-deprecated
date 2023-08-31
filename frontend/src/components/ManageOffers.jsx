@@ -24,10 +24,11 @@ import update from "../assets/images/update.png";
 import noimage from "../assets/images/image_unavailable.png";
 
 export const ManageOffers = () => {
-    const { alias, walletUrl, daemonUrl } = useContext(DefaultContext);
+    const { alias, walletUrl, daemonUrl, balance } = useContext(DefaultContext);
 
     const [postSuccess, setPostSuccess] = useState("");
     const [txid, setTxId] = useState("");
+    const [featuredOffer, setFeaturedOffer] = useState("no");
 
     const [vendorTxId, setVendorTxId] = useState("");
     const [title, setTitle] = useState("");
@@ -37,7 +38,7 @@ export const ManageOffers = () => {
     const [category, setCategory] = useState(""); // product image
     const [contactDetails, setContactDetails] = useState("");
     const [comments, setComments] = useState("");
-    const [conditions, setConditions] = useState(`offer:${alias}`);
+    const [conditions, setConditions] = useState(`bto:${alias}`);
     const [expire, setExpire] = useState("5");
     const [locationCity, setLocationCity] = useState("");
     const [locationCountry, setLocationCountry] = useState("");
@@ -50,7 +51,7 @@ export const ManageOffers = () => {
     const [updateBonus, setUpdateBonus] = useState("");
     const [updateCategory, setUpdateCategory] = useState(""); // product image
     const [updateComments, setUpdateComments] = useState("");
-    const [updateConditions, setUpdateConditions] = useState(`offer:${alias}`);
+    const [updateConditions, setUpdateConditions] = useState(`bto:${alias}`);
     const [updateExpire, setUpdateExpire] = useState("3");
     const [updateLocationCity, setUpdateLocationCity] = useState("");
     const [updatePaymentType, setUpdatePaymentType] = useState("");
@@ -264,12 +265,36 @@ export const ManageOffers = () => {
                                     <option value="30">30</option>
                                 </select>
                             </div>
-                            <p className="text-white">{txid}</p>
+                            <div className="grid grid-rows-1">
+                                {balance > 5.02 && (
+                                    <div className="grid grid-rows-1">
+                                        <span className="text-sm create">
+                                            Appear as featured for 5 $ZANO
+                                        </span>
+                                        <select
+                                            name="featured"
+                                            id="featured"
+                                            value={featuredOffer}
+                                            onChange={(event) => {
+                                                setFeaturedOffer(
+                                                    event.target.value
+                                                );
+                                            }}
+                                        >
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
 
                     {/*  */}
-                    <div className="grid grid-cols-1 gap-4">{createButton}</div>
+                    <div className="grid grid-cols-1 gap-4 mb-1">
+                        {createButton}
+                    </div>
+                    <p className="text-white">{txid}</p>
                     <Modal
                         open={open}
                         onClose={onCloseModal}
@@ -450,7 +475,7 @@ export const ManageOffers = () => {
                                 // check if url contains .onion, if so, render
 
                                 if (
-                                    offers[index].cnt.includes(`offer:${alias}`)
+                                    offers[index].cnt.includes(`bto:${alias}`)
                                 ) {
                                     return (
                                         <SwiperSlide className="mb-10 grid grid-rows-3 rounded-lg p-3 border-2 border-purple-700 shadow-lg">

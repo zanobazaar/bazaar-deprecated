@@ -43,16 +43,14 @@ func (a *App) HowManyOffers(daemonUrl string, alias string) int {
 
 	numberOfOffers := 0
 
-	offerALiasStr := fmt.Sprintf("offer:%s", alias)
+	offerAliasStr := fmt.Sprintf("bto:%s", alias)
 	offers := market.GetAllOffers(daemonUrl)
 
 	for _, offer := range offers.Result.Offers {
-		if offer.Cnt == offerALiasStr {
+		if offer.Cnt == offerAliasStr {
 			numberOfOffers++
 		}
 	}
-
-	fmt.Println(offerALiasStr)
 
 	return numberOfOffers
 }
@@ -78,6 +76,18 @@ func (a *App) VendorExistsCheck(alias string, daemonUrl string) bool {
 	return vendorExists
 }
 
+func (a *App) UpdateAlias(existingTxId string, alias string, walletUrl string, amount string, contactDetails string, comments string, conditions string, paymentType string) string {
+
+	// test := fmt.Sprintf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s", existingTxId, alias, walletUrl, amount, contactDetails, comments, conditions, paymentType)
+	// fmt.Println(test)
+	txid := market.UpdateAliasTx(existingTxId, alias, walletUrl, amount, contactDetails, comments, conditions, paymentType)
+	return txid
+}
+
+func (a *App) PostAlias(alias string, walletUrl string, amount string, contactDetails string, comments string, conditions string, paymentType string) string {
+	txid := market.ListAlias(alias, walletUrl, amount, contactDetails, comments, conditions, paymentType)
+	return txid
+}
 func (a *App) UpdateOffer(txIdToUpdate string, walletUrl string, title string, amount string, category string, comments string, conditions string, expire int, locationCity string, paymentType string) string {
 	offerTxid := market.OfferUpdate(txIdToUpdate, walletUrl, title, amount, category, comments, conditions, expire, locationCity, paymentType)
 	return offerTxid

@@ -13,9 +13,13 @@ export function GetBalance(arg1:string):Promise<main.Balance>;
 
 export function HowManyOffers(arg1:string,arg2:string):Promise<number>;
 
+export function PostAlias(arg1:string,arg2:string,arg3:string,arg4:string,arg5:string,arg6:string,arg7:string):Promise<string>;
+
 export function PostOffer(arg1:string,arg2:string,arg3:string,arg4:string,arg5:string,arg6:string,arg7:number,arg8:string,arg9:string):Promise<string>;
 
 export function SendDonation(arg1:string,arg2:string,arg3:string):Promise<string>;
+
+export function UpdateAlias(arg1:string,arg2:string,arg3:string,arg4:string,arg5:string,arg6:string,arg7:string,arg8:string):Promise<string>;
 
 export function UpdateOffer(arg1:string,arg2:string,arg3:string,arg4:string,arg5:string,arg6:string,arg7:string,arg8:number,arg9:string,arg10:string):Promise<string>;
 

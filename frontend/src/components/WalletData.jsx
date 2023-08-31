@@ -7,10 +7,17 @@ import { GetBalance, HowManyOffers } from "../../wailsjs/go/main/App";
 import Big from "big.js";
 
 export const WalletData = () => {
-    const { walletUrl, daemonUrl, alias, aliasForSale, setAliasForSale } =
-        useContext(DefaultContext);
+    const {
+        walletUrl,
+        daemonUrl,
+        alias,
+        aliasForSale,
+        balance,
+        setBalance,
+        setAliasForSale,
+    } = useContext(DefaultContext);
 
-    const [balance, setBalance] = useState(0);
+    // const [balance, setBalance] = useState(0);
     const [unlockedBalance, setUnlockedBalance] = useState(0);
     const [numberOfOffers, setNumberOfOffers] = useState(0);
 

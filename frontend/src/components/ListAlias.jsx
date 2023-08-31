@@ -3,8 +3,6 @@ import { DefaultContext } from "../contexts/MainContext";
 
 import { FetchOffers } from "../../wailsjs/go/main/App";
 
-import tor from "../assets/images/tor.svg";
-
 export const ListAlias = () => {
     const { daemonUrl } = useContext(DefaultContext);
 
@@ -37,6 +35,7 @@ export const ListAlias = () => {
                                 <th className="p-2">Alias</th>
                                 <th className="p-2">Description</th>
                                 <th className="p-2">Contact</th>
+                                <th className="p-2">Amount</th>
                                 <th className="p-2">Accepting</th>
                             </tr>
                         </thead>
@@ -45,7 +44,7 @@ export const ListAlias = () => {
                                 {/* 👇️ iterate object KEYS */}
                                 {Object.keys(offers).map((key, index) => {
                                     // check if url contains .onion, if so, render
-                                    if (offers[index].cnt.includes("alias:")) {
+                                    if (offers[index].do.includes("bta:")) {
                                         return (
                                             <tr
                                                 className="border-2 border-b-sky-700"
@@ -53,7 +52,7 @@ export const ListAlias = () => {
                                             >
                                                 <td className="p-2">
                                                     <p className="text-md">
-                                                        {offers[index].t}
+                                                        @{offers[index].t}
                                                     </p>
                                                 </td>
                                                 <td className="p-2">
@@ -61,11 +60,18 @@ export const ListAlias = () => {
                                                         {offers[index].com}
                                                     </p>
                                                 </td>
+
                                                 <td className="p-2 break-all">
                                                     <p className="text-md">
                                                         {offers[index].cnt}
                                                     </p>
                                                 </td>
+                                                <td className="p-2 break-all">
+                                                    <p className="text-md">
+                                                        {offers[index].ap}
+                                                    </p>
+                                                </td>
+
                                                 <td className="p-2 break-all">
                                                     <p className="text-md">
                                                         {offers[index].pt}

@@ -22,12 +22,20 @@ export function HowManyOffers(arg1, arg2) {
   return window['go']['main']['App']['HowManyOffers'](arg1, arg2);
 }
 
+export function PostAlias(arg1, arg2, arg3, arg4, arg5, arg6, arg7) {
+  return window['go']['main']['App']['PostAlias'](arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+}
+
 export function PostOffer(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) {
   return window['go']['main']['App']['PostOffer'](arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
 export function SendDonation(arg1, arg2, arg3) {
   return window['go']['main']['App']['SendDonation'](arg1, arg2, arg3);
+}
+
+export function UpdateAlias(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) {
+  return window['go']['main']['App']['UpdateAlias'](arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 }
 
 export function UpdateOffer(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) {

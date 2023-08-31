@@ -1,18 +1,73 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import { DefaultContext } from "../contexts/MainContext";
+
+import { PostAlias, UpdateAlias, FetchOffers } from "../../wailsjs/go/main/App";
 
 import AliasImg from "../assets/images/alias_marketplace.png";
 
 export const AliasMarket = () => {
-    const { alias, aliasForSale } = useContext(DefaultContext);
+    const { walletUrl, daemonUrl, alias, aliasForSale, setAliasForSale } =
+        useContext(DefaultContext);
 
     const [amount, setAmount] = useState("");
-    const [contactDetails, setContactDetails] = useState(
-        "https://discord.gg/FHjK3SEC"
-    );
+    const [contactDetails, setContactDetails] = useState("");
     const [comments, setComments] = useState("");
+    const [conditions, setConditions] = useState(`bta:${alias}`);
     const [paymentType, setPaymentType] = useState("");
+
+    const [txId, setTxId] = useState("no recent update");
+
+    const [existingTxId, setExistingTxId] = useState("");
+
+    const updateAlias = () => {
+        console.log(paymentType);
+        UpdateAlias(
+            existingTxId,
+            alias,
+            walletUrl,
+            amount,
+            contactDetails,
+            comments,
+            conditions,
+            paymentType
+        ).then((result) => {
+            if (result != "") {
+                setTxId("alias updated");
+            } else {
+                setTxId("derp");
+            }
+            // handle error
+        });
+    };
+
+    const pushAlias = () => {
+        PostAlias(
+            alias,
+            walletUrl,
+            amount,
+            contactDetails,
+            comments,
+            conditions,
+            paymentType
+        ).then((result) => {
+            if (result != "") {
+                setAliasForSale(true);
+            }
+            // handle error
+        });
+    };
+
+    useEffect(() => {
+        FetchOffers(daemonUrl).then((result) => {
+            Object.keys(result.result.offers).forEach((k, i) => {
+                if (result.result.offers[k].do.trim() == conditions) {
+                    setExistingTxId(result.result.offers[k].tx_hash);
+                    setAliasForSale(true);
+                }
+            });
+        });
+    }, []);
 
     return (
         <div className="flex flex-col">
@@ -86,6 +141,7 @@ export const AliasMarket = () => {
                             className="p-0.5 w-full"
                             type="text"
                             placeholder="20"
+                            value={amount}
                             onChange={(event) => {
                                 setAmount(event.target.value);
                             }}
@@ -97,32 +153,42 @@ export const AliasMarket = () => {
                             className="p-0.5 w-full"
                             type="text"
                             placeholder="$ZANO"
+                            value={paymentType}
                             onChange={(event) => {
                                 setPaymentType(event.target.value);
                             }}
                         />
                     </div>
                     {aliasForSale && (
-                        <button
-                            className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
-                            onClick={() => {
-                                alert("update details");
-                            }}
-                        >
-                            Update details
-                        </button>
+                        <div>
+                            <button
+                                className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
+                                onClick={() => {
+                                    updateAlias();
+                                }}
+                            >
+                                Update details
+                            </button>
+                            <div className="break-all">
+                                <p>{txId}</p>
+                            </div>
+                        </div>
                     )}
                     {!aliasForSale && (
-                        <button
-                            className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
-                            onClick={() => {
-                                alert("list for sale");
-                            }}
-                        >
-                            List Alias
-                        </button>
+                        <div>
+                            <button
+                                className="rounded bg-purple-700 mb-3 hover:bg-purple-600 active:bg-purple-500 text-white p-2"
+                                onClick={() => {
+                                    pushAlias();
+                                }}
+                            >
+                                List Alias
+                            </button>
+                            <div className="break-all">
+                                <p></p>
+                            </div>
+                        </div>
                     )}
-                    <p className="text-white"></p>
                 </div>
             </div>
         </div>
