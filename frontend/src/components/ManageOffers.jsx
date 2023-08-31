@@ -127,7 +127,6 @@ export const ManageOffers = () => {
     if (
         title.length != 0 &&
         amount.length != 0 &&
-        category.length != 0 &&
         comments.length != 0 &&
         conditions.length != 0 &&
         locationCity.length != 0 &&
