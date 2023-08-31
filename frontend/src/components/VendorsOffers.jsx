@@ -7,7 +7,7 @@ import { FetchOffers } from "../../wailsjs/go/main/App";
 
 import wenImage from "../assets/images/wen_image.png";
 
-export const ViewBazaars = () => {
+export const VendorsOffers = () => {
     const { daemonUrl } = useContext(DefaultContext);
 
     const [offers, setOffers] = useState({});
@@ -42,12 +42,7 @@ export const ViewBazaars = () => {
                             ) {
                                 return (
                                     // vendor card
-                                    <button
-                                        className=""
-                                        onClick={() => {
-                                            alert("hi");
-                                        }}
-                                    >
+                                    <button className="">
                                         <Link to="">
                                             <div className="grid grid-rows-1 hover:bg-slate-800 bg:shadow-xxl active:bg-slate-700 dash-card p-10 shadow-lg rounded-lg mb-5 justify-center text-left items-center align-middle">
                                                 <div className="mb-3">
