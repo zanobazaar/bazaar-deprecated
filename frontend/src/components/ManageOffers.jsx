@@ -265,7 +265,7 @@ export const ManageOffers = () => {
                                 </select>
                             </div>
                             <div className="grid grid-rows-1">
-                                {balance > 5.02 && (
+                                {balance > 0.5 && (
                                     <div className="grid grid-rows-1">
                                         <span className="text-sm create">
                                             Appear as featured for 5 $ZANO

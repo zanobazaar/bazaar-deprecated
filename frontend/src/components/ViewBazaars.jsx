@@ -8,7 +8,8 @@ import { FetchOffers } from "../../wailsjs/go/main/App";
 import wenImage from "../assets/images/wen_image.png";
 
 export const ViewBazaars = () => {
-    const { daemonUrl } = useContext(DefaultContext);
+    const { daemonUrl, activeVendor, setActiveVendor } =
+        useContext(DefaultContext);
 
     const [offers, setOffers] = useState({});
     const [loading, setLoading] = useState(true);
@@ -36,7 +37,7 @@ export const ViewBazaars = () => {
                         {Object.keys(offers).map((key, index) => {
                             // check if url contains .onion, if so, render
                             if (
-                                offers[index].cnt.includes("bto:") &&
+                                offers[index].cnt.includes("vendor:") &&
                                 offers[index].t != "" &&
                                 offers[index].com != ""
                             ) {
@@ -45,10 +46,10 @@ export const ViewBazaars = () => {
                                     <button
                                         className=""
                                         onClick={() => {
-                                            alert("hi");
+                                            setActiveVendor(offers[index].cnt);
                                         }}
                                     >
-                                        <Link to="">
+                                        <Link to="/vendoroffers">
                                             <div className="grid grid-rows-1 hover:bg-slate-800 bg:shadow-xxl active:bg-slate-700 dash-card p-10 shadow-lg rounded-lg mb-5 justify-center text-left items-center align-middle">
                                                 <div className="mb-3">
                                                     {offers[index].cat.trim() ==

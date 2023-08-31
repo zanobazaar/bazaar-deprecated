@@ -7,8 +7,8 @@ import { FetchOffers } from "../../wailsjs/go/main/App";
 
 import wenImage from "../assets/images/wen_image.png";
 
-export const VendorsOffers = () => {
-    const { daemonUrl } = useContext(DefaultContext);
+export const VendorOffers = () => {
+    const { daemonUrl, activeVendor } = useContext(DefaultContext);
 
     const [offers, setOffers] = useState({});
     const [loading, setLoading] = useState(true);
@@ -22,7 +22,9 @@ export const VendorsOffers = () => {
 
     return (
         <div className="flex flex-col">
-            <h2 className="text-3xl mb-20 text-purple-700">Bazaar directory</h2>
+            <h2 className="text-3xl mb-20 text-purple-700">
+                {activeVendor.slice(7) + "'s Bazaar"}
+            </h2>
             {loading && (
                 <div>
                     <h1>Loading Bazaars..</h1>
@@ -36,7 +38,9 @@ export const VendorsOffers = () => {
                         {Object.keys(offers).map((key, index) => {
                             // check if url contains .onion, if so, render
                             if (
-                                offers[index].cnt.includes("bto:") &&
+                                offers[index].cnt.includes(
+                                    "bto:" + activeVendor.slice(7)
+                                ) &&
                                 offers[index].t != "" &&
                                 offers[index].com != ""
                             ) {
@@ -90,6 +94,12 @@ export const VendorsOffers = () => {
                                                     <p>
                                                         Accepting:{" "}
                                                         {offers[index].pt}
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p>
+                                                        Accepting:{" "}
+                                                        {offers[index].ap}
                                                     </p>
                                                 </div>
                                             </div>

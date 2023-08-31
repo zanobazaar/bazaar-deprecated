@@ -7,6 +7,7 @@ import { Layout } from "./components/Layout/Layout";
 import { Dashboard } from "./components/Dashboard";
 import { ViewBazaars } from "./components/ViewBazaars";
 // import { MyBazaar } from "./components/MyBazaar";
+import { VendorOffers } from "./components/VendorsOffers";
 import { SeeAllOffers } from "./components/SeeAllOffers";
 import { OnionDirectory } from "./components/OnionDirectory";
 import { ListAlias } from "./components/ListAlias";
@@ -25,6 +26,7 @@ const App = () => {
                         <Route path="/" Component={Dashboard} />
                         <Route path="/bazaars" Component={ViewBazaars} />
                         <Route path="/offers" Component={SeeAllOffers} />
+                        <Route path="/vendoroffers" Component={VendorOffers} />
                         <Route
                             path="/oniondirectory"
                             Component={OnionDirectory}
